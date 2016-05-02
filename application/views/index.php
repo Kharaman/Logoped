@@ -7,6 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Logoped</title>
 </head>
 <body>
-<a href=""></a>
+<a href="/children">Список детей</a>
 </body>
 </html>
