@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config = [
-    'children/edit' => [
+    'children' => [
         [
             'field' => 'full_name',
             'label' => 'Ф.И.О.',

@@ -22,12 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td>№ группы</td>
             </tr>
             <tr>
-                <td><input type="text" name="full_name" value="<?= $child->full_name; ?>"</td>
-                <td><input type="text" name="date" value="<?= $child->date; ?>"</td>
-                <td><input type="text" name="address" value="<?= $child->address; ?>"</td>
-                <td><input type="text" name="date_PMPC" value="<?= $child->date_PMPC; ?>"</td>
-                <td><input type="text" name="protocol_number" value="<?= $child->protocol_number; ?>"</td>
-                <td><input type="text" name="group_number" value="<?= $child->group_number; ?>"</td>
+                <td><input type="text" name="full_name" value="<?= set_value('full_name', $child->full_name); ?>"</td>
+                <td><input type="text" name="date" value="<?= set_value('date', $child->date); ?>"</td>
+                <td><input type="text" name="address" value="<?= set_value('address', $child->address); ?>"</td>
+                <td><input type="text" name="date_PMPC" value="<?= set_value('date_PMPC', $child->date_PMPC); ?>"</td>
+                <td><input type="text" name="protocol_number" value="<?= set_value('protocol_number', $child->protocol_number); ?>"</td>
+                <td><input type="text" name="group_number" value="<?= set_value('group_number', $child->group_number); ?>"</td>
             </tr>
         </table>
         <input type="submit" value="OK">

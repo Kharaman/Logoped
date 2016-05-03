@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
     <h1>Список детей</h1>
+    <a href="/children/create/">Add</a>
     <table>
         <tr>
             <td>Ф.И.О.</td>
@@ -28,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?= $child->protocol_number; ?></td>
                 <td><?= $child->group_number; ?></td>
                 <td><a href="/children/edit/<?= $child->id; ?>">Edit</a></td>
+                <td><a href="/children/delete/<?= $child->id; ?>">x</a></td>
             </tr>
         <?php endforeach; ?>
     </table>
