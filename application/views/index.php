@@ -8,5 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <a href="/children">Список детей</a>
+<a href="/speech_screen">Речевой экран</a>
 </body>
 </html>

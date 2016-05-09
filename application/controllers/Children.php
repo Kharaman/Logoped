@@ -7,9 +7,6 @@ class Children extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Children_model', 'children');
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->library('generic');
     }
 
     public function index()

@@ -38,6 +38,30 @@ $config = [
             'label' => 'Номер группы',
             'rules' => 'required'
         ],
+
+    ],
+
+    'speech_screen' => [
+        [
+            'field' => 'children_id',
+            'label' => 'Ф.И.О.',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'ff_perception',
+            'label' => 'ФФ. восприятие',
+            'rules' => 'required'
+        ],
+        [
+            'field' => 'study_year',
+            'label' => 'Год обучения',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'diagnosis',
+            'label' => 'Диагноз',
+            'rules' => 'required'
+        ],
     ]
 
 
