@@ -7,7 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Logoped</title>
 </head>
 <body>
-<a href="/children">Список детей</a>
-<a href="/speech_screen">Речевой экран</a>
+<a href="/children">Список детей</a><br>
+<a href="/speech_screen">Речевой экран</a><br>
+<a href="/individual_plan">Индивидуальный план развития</a><br>
 </body>
 </html>

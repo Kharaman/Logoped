@@ -101,17 +101,7 @@ class Speech_screen_model extends MY_model
         return $query->result_array();
     }
 
-    public function get_not_added_children()
-    {
-        $this->db->select('
-            children.id AS id,
-            children.full_name AS full_name
-        ');
-        $this->db->join('speech_screen', 'speech_screen.children_id = children.id', 'left');
-        $this->db->where('speech_screen.id IS NULL');
-        $query = $this->db->get('children');
-        return $query->result();
-    }
+
 
     public function prepare_addition($post)
     {

@@ -62,6 +62,37 @@ $config = [
             'label' => 'Диагноз',
             'rules' => 'required'
         ],
+    ],
+
+    'individual_plan' => [
+        [
+            'field' => 'children_id',
+            'label' => 'Ф.И.О.',
+            'rules' => 'required|numeric'
+        ],
+    ],
+
+    'classes_schedule' => [
+        [
+            'field' => 'day',
+            'label' => 'День недели',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'time',
+            'label' => 'Время',
+            'rules' => 'required'
+        ],
+        [
+            'field' => 'children_id',
+            'label' => 'Ф.И.О.',
+            'rules' => 'numeric'
+        ],
+        [
+            'field' => 'group_number',
+            'label' => '№ группы',
+            'rules' => 'numeric'
+        ],
     ]
 
 

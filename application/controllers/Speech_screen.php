@@ -8,7 +8,6 @@ class Speech_screen extends CI_Controller
     {
         parent::__construct();
         $this->load->model('speech_screen_model', 'screen');
-        $this->load->model('children_model', 'children');
         $this->load->model('progress_marks_model', 'progress');
         $this->load->model('sounds_model', 'sounds');
     }
@@ -64,7 +63,6 @@ class Speech_screen extends CI_Controller
 
             if ($this->screen->edit_sounds($this->screen->screen_id, $sounds))
             {
-                echo 'success!';die;
                 header('Location: /');
                 exit;
             }

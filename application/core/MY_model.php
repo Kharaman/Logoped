@@ -32,4 +32,16 @@ abstract class MY_model extends CI_Model
         $this->db->insert(static::$table, $data);
         return $this->db->insert_id();
     }
+
+    public function get_not_added_children()
+    {
+        $this->db->select('
+            children.id AS id,
+            children.full_name AS full_name
+        ');
+        $this->db->join(static::$table, static::$table . '.children_id = children.id', 'left');
+        $this->db->where(static::$table . '.id IS NULL');
+        $query = $this->db->get('children');
+        return $query->result();
+    }
 }
