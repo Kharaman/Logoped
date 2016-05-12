@@ -54,6 +54,7 @@ class Individual_plan_model extends MY_model
             sounds.name AS sounds_name,
             plan_sounds_rel.is_done,
             sounds.transcription AS sounds_transcription,
+            sounds.id AS sound_id,
             individual_plan.id AS id,
             individual_plan.children_id AS children_id,
             individual_plan.whistling AS whistling,
@@ -84,8 +85,9 @@ class Individual_plan_model extends MY_model
                 unset($data[$key]['sounds_name']);
                 unset($data[$key]['is_done']);
                 unset($data[$key]['sounds_transcription']);
+                unset($data[$key]['sound_id']);
             }
-            $data[$key]['sounds'][$row['sounds_transcription']] = [
+            $data[$key]['sounds'][$row['sound_id']] = [
                 'is_done' => $row['is_done'],
             ];
         }

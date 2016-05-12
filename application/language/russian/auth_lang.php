@@ -26,7 +26,7 @@ $lang['error_csrf'] = 'Форма не прошла проверку безоп�
 // Login
 $lang['login_heading']         = 'Вход';
 $lang['login_subheading']      = 'Для входа используйте email/имя пользователя и пароль.';
-$lang['login_identity_label']  = 'Email:';
+$lang['login_identity_label']  = 'Логин:';
 $lang['login_password_label']  = 'Пароль:';
 $lang['login_remember_label']  = 'Запомнить меня:';
 $lang['login_submit_btn']      = 'Вход';
@@ -60,7 +60,7 @@ $lang['create_user_heading']                           = 'Создать пол�
 $lang['create_user_subheading']                        = 'Пожалуйста заполните следующую информацию.';
 $lang['create_user_fname_label']                       = 'Имя:';
 $lang['create_user_lname_label']                       = 'Фамилия:';
-$lang['create_user_identity_label']                    = 'Identity:';
+$lang['create_user_identity_label']                    = 'Логин:';
 $lang['create_user_company_label']                     = 'Компания:';
 $lang['create_user_email_label']                       = 'Email:';
 $lang['create_user_phone_label']                       = 'Телефон:';

@@ -41,19 +41,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <td><input type="text" name="other_sounds" value="<?= set_value('other_sounds', $plan['other_sounds']); ?>"></td>
             <?php foreach ($sounds as $sound): ?>
                 <td>
-                    <?php foreach($plan['sounds'] as $plan_sound): ?>
                         <input type="hidden" name="sound_<?= $sound->id; ?>" value="0">
-                        <?php if ($plan_sound['is_done'] == 1): ?>
-                            <input type="checkbox" name="sound_<?= $sound->id; ?>" value="1" <?= set_checkbox('sound_' . $sound->id, '1', TRUE); ?>>
+                        <?php if ($plan['sounds'][$sound->id]['is_done']  == 1): ?>
+                            <input type="checkbox" name="sound_<?= $sound->id; ?>" value="1" checked>
                         <?php else: ?>
-                            <input type="checkbox" name="sound_<?= $sound->id; ?>" value="1" <?= set_checkbox('sound_' . $sound->id, '1', FALSE); ?>>
-                        <?php endif; break; ?>
-                    <?php endforeach; ?>
+                            <input type="checkbox" name="sound_<?= $sound->id; ?>" value="1">
+                        <?php endif; ?>
                 </td>
             <?php endforeach; ?>
         </tr>
     </table>
     <input type="submit" value="OK">
 </form>
+<pre>
+<?php var_dump($plan); ?>
+    </pre>
 </body>
 </html>

@@ -93,6 +93,19 @@ $config = [
             'label' => '№ группы',
             'rules' => 'numeric'
         ],
+    ],
+
+    'speech_card' => [
+        [
+            'field' => 'children_id',
+            'label' => 'Ф.И.О.',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'peu_number',
+            'label' => '№ ДОУ',
+            'rules' => 'required|numeric'
+        ],
     ]
 
 

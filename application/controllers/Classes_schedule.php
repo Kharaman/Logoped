@@ -6,15 +6,25 @@ class Classes_schedule extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if ( ! $this->ion_auth->logged_in())
+        {
+            redirect('auth/login');
+            exit;
+        }
         $this->load->model('classes_schedule_model', 'classes_schedule');
-        $this->load->model('groups_model', 'groups');
+        $this->load->model('children_groups_model', 'groups');
     }
 
     public function index()
     {
-        $this->load->view('classes_schedule/index');
+        $tmp = $this->classes_schedule->get_all();
+        $data = [];
+        foreach ($tmp as $row)
+        {
+            $data['classes'][$row->day][] = $row;
+        }
+        $this->load->view('classes_schedule/index', $data);
     }
-
 
     public function create()
     {
@@ -39,30 +49,43 @@ class Classes_schedule extends CI_Controller
                 header('Location: /classes_schedule');
                 exit;
             }
-
-
-
         }
-
-
-//        if ($this->form_validation->run() == FALSE)
-//        {
-//            $this->load->view('classes_schedule/add');
-//        }
-//        else
-//        {
-//            $sounds = $this->plan->prepare_addition($this->input->post());
-//            $insert_id = $this->plan->create($this->plan->plan_data);
-//
-//            foreach ($sounds as &$item) {
-//                $item['individual_plan_id'] = $insert_id;
-//            }
-//
-//            if ($this->plan->insert_sounds($sounds))
-//            {
-//                header('Location: /');
-//                exit;
-//            }
-//        }
     }
+
+    public function edit($id)
+    {
+        if ($this->form_validation->run('classes_schedule') == FALSE)
+        {
+            $data['class'] = $this->classes_schedule->get_one($id);
+            $data['children'] = $this->children->get_children_full_names();
+            $data['groups'] = $this->groups->get_all();
+            $this->load->view('classes_schedule/edit', $data);
+        }
+        else
+        {
+            if ($this->input->post('children_id'))
+            {
+                $data = $this->generic->get_post('day, time, children_id');
+            }
+            else
+            {
+                $data = $this->generic->get_post('day, time, group_number');
+            }
+            if ($this->classes_schedule->edit($id, $data))
+            {
+                header('Location: /classes_schedule');
+                exit;
+            }
+        }
+    }
+
+    public function delete($id)
+    {
+        if ($this->classes_schedule->delete($id))
+        {
+            header('Location: /classes_schedule');
+            exit;
+        }
+    }
+
 }

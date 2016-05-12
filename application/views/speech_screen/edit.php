@@ -40,18 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td>
                     <select name="sound_<?= $sound->id; ?>" id="">
                         <?php foreach ($progress as $mark): ?>
-                            <?php foreach ($screen['sounds'] as &$progress_mark): ?>
-                                <?php if ($mark->id == $progress_mark['progress_id']): ?>
-                                    <option value="<?= $mark->id; ?>" selected>
-                                        <?= $mark->symbol; ?>
-                                    </option>
-                                <?php break; else: ?>
-                                    <option value="<?= $mark->id; ?>">
-                                        <?= $mark->symbol; ?>
-                                    </option>
-                                <?php endif; break; ?>
-                            <?php endforeach; ?>
-
+                            <option value="<?= $mark->id; ?>"<?php if ($mark->id == $screen['sounds'][$sound->id]['progress_id']):?> selected <?php endif;?>>
+                                <?= $mark->symbol; ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </td>

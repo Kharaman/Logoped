@@ -7,6 +7,11 @@ class Speech_screen extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if ( ! $this->ion_auth->logged_in())
+        {
+            redirect('auth/login');
+            exit;
+        }
         $this->load->model('speech_screen_model', 'screen');
         $this->load->model('progress_marks_model', 'progress');
         $this->load->model('sounds_model', 'sounds');
@@ -52,6 +57,7 @@ class Speech_screen extends CI_Controller
         {
             $tmp = $this->screen->get_one($id);
             $data['screen'] = $this->screen->convert_data_row($tmp);
+            var_dump($data['screen']);
             $data['sounds'] = $this->sounds->get_screen_sounds();
             $data['progress'] = $this->progress->get_all();
             $this->load->view('speech_screen/edit', $data);

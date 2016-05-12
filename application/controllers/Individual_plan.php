@@ -6,6 +6,11 @@ class Individual_plan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if ( ! $this->ion_auth->logged_in())
+        {
+            redirect('auth/login');
+            exit;
+        }
         $this->load->model('individual_plan_model', 'plan');
         $this->load->model('sounds_model', 'sounds');
     }
@@ -57,7 +62,6 @@ class Individual_plan extends CI_Controller
 
             if ($this->plan->edit_sounds($this->plan->plan_id, $sounds))
             {
-                echo 'success!';die;
                 header('Location: /');
                 exit;
             }

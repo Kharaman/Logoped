@@ -41,8 +41,9 @@ class Speech_screen_model extends MY_model
                 unset($data[$key]['sounds_name']);
                 unset($data[$key]['progress_symbol']);
                 unset($data[$key]['sounds_transcription']);
+                unset($data[$key]['sound_id']);
             }
-            $data[$key]['sounds'][$row['sounds_transcription']] = [
+            $data[$key]['sounds'][$row['sound_id']] = [
                 'progress_id' => $row['progress_id'],
                 'progress_symbol' => $row['progress_symbol']
             ];
@@ -81,6 +82,7 @@ class Speech_screen_model extends MY_model
     {
         $this->db->select('
             sounds.name AS sounds_name,
+            sounds.id AS sound_id,
             sounds.transcription AS sounds_transcription,
             progress_marks.symbol AS progress_symbol,
             progress_marks.id AS progress_id,
