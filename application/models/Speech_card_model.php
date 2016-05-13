@@ -16,4 +16,16 @@ class Speech_card_model extends MY_model
         $query = $this->db->get('children');
         return $query->result();
     }
+
+    public function get_one($id)
+    {
+        $this->db->select('
+            children.full_name AS full_name,
+            speech_card.*
+        ');
+        $this->db->join('children', 'children.id = speech_card.children_id', 'left');
+        $this->db->where('speech_card.id', $id);
+        $query = $this->db->get(self::$table);
+        return $query->row();
+    }
 }

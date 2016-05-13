@@ -106,6 +106,37 @@ $config = [
             'label' => '№ ДОУ',
             'rules' => 'required|numeric'
         ],
+    ],
+
+    'analysis' => [
+        [
+            'field' => 'children_id',
+            'label' => 'Ф.И.О.',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'description',
+            'label' => 'Описание',
+            'rules' => 'required'
+        ],
+    ],
+
+    'individual_card' => [
+        [
+            'field' => 'children_id',
+            'label' => 'Ф.И.О.',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'is_beginning',
+            'label' => 'Период',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'eyes_count_operations',
+            'label' => 'Счетные операции глазами',
+            'rules' => 'required|numeric'
+        ],
     ]
 
 

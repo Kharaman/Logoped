@@ -42,19 +42,26 @@ class Speech_card extends CI_Controller
     {
         if ($this->form_validation->run('speech_card') == FALSE)
         {
-            $tmp = $this->plan->get_one($id);
-            $this->load->view('individual_plan/edit', $data);
+            $data['card'] = $this->speech_card->get_one($id);
+            $this->load->view('speech_card/edit', $data);
         }
         else
         {
-            $sounds = $this->plan->prepare_addition($this->input->post());
-            $this->plan->edit($this->plan->plan_id, $this->plan->plan_data);
-
-            if ($this->plan->edit_sounds($this->plan->plan_id, $sounds))
+            $data = $this->generic->get_post('children_id, peu_number, enrollment_date, parent_complaints, native_language, motility_state, hearing, general_development, attention, efficiency, memory, voice, timbre, breath, diction, vocal_cords, teeth, lips, tongue, movement, bite');
+            if ($this->speech_card->edit($id, $data))
             {
                 header('Location: /');
                 exit;
             }
+        }
+    }
+
+    public function delete($id)
+    {
+        if ($this->speech_card->delete($id))
+        {
+            redirect('/speech_card');
+            exit;
         }
     }
 

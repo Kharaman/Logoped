@@ -53,8 +53,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     <input type="submit" value="OK">
 </form>
-<pre>
-<?php var_dump($plan); ?>
-    </pre>
 </body>
 </html>
