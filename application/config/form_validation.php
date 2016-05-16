@@ -137,6 +137,24 @@ $config = [
             'label' => 'Счетные операции глазами',
             'rules' => 'required|numeric'
         ],
+    ],
+
+    'work_schedule' => [
+        [
+            'field' => 'day',
+            'label' => 'День недели',
+            'rules' => 'required|numeric'
+        ],
+        [
+            'field' => 'start_time',
+            'label' => 'Время начала',
+            'rules' => 'required'
+        ],
+        [
+            'field' => 'end_time',
+            'label' => 'Время конца',
+            'rules' => 'required'
+        ],
     ]
 
 

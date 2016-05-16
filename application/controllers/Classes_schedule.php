@@ -23,7 +23,11 @@ class Classes_schedule extends CI_Controller
         {
             $data['classes'][$row->day][] = $row;
         }
+        $view['title'] = 'Расписание занятий';
+        $this->load->view('header', $view);
         $this->load->view('classes_schedule/index', $data);
+        $this->load->view('footer');
+
     }
 
     public function create()
@@ -32,7 +36,11 @@ class Classes_schedule extends CI_Controller
         {
             $data['children'] = $this->children->get_children_full_names();
             $data['groups'] = $this->groups->get_all();
+            $view['title'] = 'Создание - Расписание занятий';
+            $this->load->view('header', $view);
             $this->load->view('classes_schedule/add', $data);
+            $this->load->view('footer');
+
         }
         else
         {
@@ -59,7 +67,11 @@ class Classes_schedule extends CI_Controller
             $data['class'] = $this->classes_schedule->get_one($id);
             $data['children'] = $this->children->get_children_full_names();
             $data['groups'] = $this->groups->get_all();
+            $view['title'] = 'Редактирование - Расписание занятий';
+            $this->load->view('header', $view);
             $this->load->view('classes_schedule/edit', $data);
+            $this->load->view('footer');
+
         }
         else
         {

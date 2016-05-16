@@ -7,7 +7,11 @@ class Home extends CI_Controller {
 	{
 		if ($this->ion_auth->logged_in())
 		{
+			$view['title'] = 'Logoped';
+			$this->load->view('header', $view);
 			$this->load->view('index');
+			$this->load->view('footer');
+
 		}
 		else
 		{

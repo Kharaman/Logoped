@@ -1,17 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Инд. план развития</title>
-</head>
-<body>
-<a href="/individual_plan/create/">Add</a><br>
+<a class="btn-add btn-floating waves-effect waves-light" href="/individual_plan/create/"><i class="material-icons">add</i></a>
+<div class="col s6">
+    <ul class="collection">
     <?php foreach($plans as $plan): ?>
-        <a href="/individual_plan/edit/<?= $plan->id; ?>"><?= $plan->full_name; ?></a> |
-        <a href="/individual_plan/delete/<?= $plan->id; ?>">Delete</a><br>
+    	<li class="collection-item">
+        <a href="/individual_plan/edit/<?= $plan->id; ?>"><?= $plan->full_name; ?></a>
+        <a href="/individual_plan/delete/<?= $plan->id; ?>" class="delete-link right"><i class="material-icons tools">close</i></a>
+        </li>
     <?php endforeach; ?>
-</body>
-</html>
+    </ul>
+</div>

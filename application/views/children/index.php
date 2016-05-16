@@ -1,37 +1,36 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Список детей</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <h1>Список детей</h1>
-    <a href="/children/create/">Add</a>
-    <table>
-        <tr>
-            <td>Ф.И.О.</td>
-            <td>Дата рождения</td>
-            <td>Адресс</td>
-            <td>Дата обследования ПМПК</td>
-            <td>№ протокола</td>
-            <td>№ группы</td>
+    <h3 class="center-align">Список детей</h3>
+<form class="right" action="/children/search">
+    <div class="input-field">
+        <input type="search" name="q" id="search">
+        <label for="search">Search</label>
+        <i class="material-icons right">close</i>
+    </div>
+</form>
+    <a class="btn-add btn-floating waves-effect waves-light" href="/children/create/"><i class="material-icons">add</i></a>
+    <table class="highlight">
+        <tr class="border-row">
+            <th>Ф.И.О.</th>
+            <th>Дата рождения</th>
+            <th>Адресс</th>
+            <th>Дата обследования ПМПК</th>
+            <th>№ протокола</th>
+            <th>№ группы</th>
+            <td colspan="2"></td>
         </tr>
         <?php foreach ($children as $child): ?>
             <tr>
-                <td><?= $child->full_name; ?></td>
+                <td class="align-left"><?= $child->full_name; ?></td>
                 <td><?= $child->date; ?></td>
                 <td><?= $child->address; ?></td>
                 <td><?= $child->date_PMPC; ?></td>
                 <td><?= $child->protocol_number; ?></td>
                 <td><?= $child->group_number; ?></td>
-                <td><a href="/children/edit/<?= $child->id; ?>">Edit</a></td>
-                <td><a href="/children/delete/<?= $child->id; ?>">x</a></td>
+                <td><a href="/children/edit/<?= $child->id; ?>"><i class="material-icons tools">edit</i></a></td>
+                <td><a href="/children/delete/<?= $child->id; ?>"><i class="material-icons tools">clear</i></a></td>
             </tr>
         <?php endforeach; ?>
     </table>
-</body>
-</html>
+

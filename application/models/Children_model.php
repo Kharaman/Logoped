@@ -25,4 +25,11 @@ class Children_model extends MY_model
         $query = $this->db->get_where(self::$table, ['id' => $id]);
         return $query->row();
     }
+
+    public function search($q, $field = 'full_name')
+    {
+        $this->db->like($field, $q);
+        $query = $this->db->get(self::$table);
+        return $query->result();
+    }
 }

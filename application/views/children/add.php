@@ -1,36 +1,46 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Список детей - Добавление</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
 <?= validation_errors(); ?>
-<h1>Добавление ребенка</h1>
+<h3 class="center-align">Добавление ребенка</h3>
 <form action="/children/create/" method="post">
-    <table>
-        <tr>
-            <td>Ф.И.О.</td>
-            <td>Дата рождения</td>
-            <td>Адресс</td>
-            <td>Дата обследования ПМПК</td>
-            <td>№ протокола</td>
-            <td>№ группы</td>
-        </tr>
-        <tr>
-            <td><input type="text" name="full_name" value="<?= set_value('full_name'); ?>"</td>
-            <td><input type="text" name="date" value="<?= set_value('date'); ?>"</td>
-            <td><input type="text" name="address" value="<?= set_value('address'); ?>"</td>
-            <td><input type="text" name="date_PMPC" value="<?= set_value('date_PMPC'); ?>"</td>
-            <td><input type="text" name="protocol_number" value="<?= set_value('protocol_number'); ?>"</td>
-            <td><input type="text" name="group_number" value="<?= set_value('group_number'); ?>"</td>
-        </tr>
-    </table>
-    <input type="submit" value="OK">
+    <div class="input-field">
+            <i class="material-icons prefix">persons</i>
+            <input type="text" name="full_name" value="<?= set_value('full_name'); ?>" id="full_name">
+            <label for="full_name">Ф.И.О.</label>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">date_range</i>
+            <input type="text" name="date" value="<?= set_value('date'); ?>" id="date">
+            <label for="date">Дата рождения</label>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">home</i>
+            <input type="text" name="address" value="<?= set_value('address'); ?>" id="address">
+            <label for="address">Адресс</label>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">developer_board</i>
+            <input type="text" name="date_PMPC" value="<?= set_value('date_PMPC'); ?>" id="date_PMPC">
+            <label for="date_PMPC">Дата обследования ПМПК</label>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">format_list_numbered</i>
+            <input type="text" name="protocol_number" value="<?= set_value('protocol_number'); ?>" id="protocol_number">
+            <label for="protocol_number">№ протокола</label>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">subject</i>
+            <input type="text" name="group_number" value="<?= set_value('group_number'); ?>" id="group_number">
+            <label for="group_number">№ группы</label>
+        </div>
+
+        <div class="center-align">
+            <button type="submit" class="btn-custom btn waves-effect waves-light">Добавить</button>
+        </div>
 </form>
-</body>
-</html>

@@ -56,6 +56,29 @@ class Speech_screen_model extends MY_model
         return $this->db->insert_batch('screen_sounds_rel', $data);
     }
 
+    public function search($q, $field = 'children.full_name')
+    {
+        $this->db->select('
+            sounds.name AS sounds_name,
+            sounds.transcription AS sounds_transcription,
+            progress_marks.symbol AS progress_symbol,
+            speech_screen.id AS id,
+            speech_screen.children_id AS children_id,
+            speech_screen.study_year AS study_year,
+            speech_screen.ff_perception AS ff_perception,
+            speech_screen.diagnosis AS diagnosis,
+            children.full_name AS full_name
+        ');
+        $this->db->join('sounds', 'sounds.id = screen_sounds_rel.sound_id', 'left');
+        $this->db->join('progress_marks', 'progress_marks.id = screen_sounds_rel.progress_mark_id', 'left');
+        $this->db->join('speech_screen', 'speech_screen.id = screen_sounds_rel.speech_screen_id', 'left');
+        $this->db->join('children', 'children.id = speech_screen.children_id', 'left');
+        $this->db->order_by('sounds.id, children.full_name');
+        $this->db->like($field, $q);
+        $query = $this->db->get('screen_sounds_rel');
+        return $query->result_array();
+    }
+
     public function get_all()
     {
         $this->db->select('

@@ -1,14 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Расписание занятий</title>
-</head>
-<body>
 <?= validation_errors(); ?>
 <form action="/classes_schedule/create" method="post">
+
+
+<div class="input-field">
+    <i class="material-icons prefix">person</i>
     <select name="day" id="">
         <option value="1">Понедельник</option>
         <option value="2">Вторник</option>
@@ -16,40 +13,49 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <option value="4">Четверг</option>
         <option value="5">Пятница</option>
     </select>
-    <br>
-    <input type="text" name="time" value="<?= set_value('time'); ?>">
-    <br>
-    <label for="group">Групповое</label>
-    <input type="radio" id="group" name="type" value="1" <?= set_radio('type', '1', TRUE); ?>>
-    <br>
+    <label for="">День недели</label>
+</div>
 
-    <label for="group">Индивидуальное</label>
-    <input type="radio" id="group" name="type" value="1" <?= set_radio('type', '1'); ?>>
-    <br>
-    <select name="children_id">
+<div class="input-field">
+    <i class="material-icons prefix">person</i>
+    <input type="text" name="time" value="<?= set_value('time'); ?>" id="time">
+    <label for="time">Время</label>
+</div>
+    
+    <p>
+    <input type="radio" id="group2" name="type" value="1" checked> <?= set_radio('type', '1'); ?>
+        <label for="group1">Групповое</label>
+    </p>
+    <p>
+    <input type="radio" id="group1" name="type" value="1" <?= set_radio('type', '1'); ?>>
+    <label for="group2">Индивидуальное</label>
+    </p>
+
+    <div class="input-field">
+        <select class="c-select browser-default" name="children_id" id="first-select">
         <option value="0">-</option>
         <?php foreach($children as $child): ?>
             <option value="<?= $child->id; ?>">
                 <?= $child->full_name; ?>
             </option>
         <?php endforeach; ?>
-    </select>
-    <br>
-    <select name="group_number">
+        </select>
+    </div>
+    
+    <div class="input-field">
+        <select class="c-select browser-default" name="group_number" id="second-select">
         <option value="0">-</option>
         <?php foreach($groups as $group): ?>
             <option value="<?= $group->id; ?>">
                 <?= $group->name . ' ' . $group->id; ?>
             </option>
         <?php endforeach; ?>
-    </select>
+        </select>
+    </div>
+    
     <br>
 
-    <input type="submit" value="ok">
-    
+    <div class="center-align">
+            <button type="submit" class="btn-custom btn waves-effect waves-light">Добавить</button>
+        </div>
 </form>
-
-
-
-</body>
-</html>

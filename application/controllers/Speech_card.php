@@ -17,7 +17,11 @@ class Speech_card extends CI_Controller
     public function index()
     {
         $data['cards'] = $this->speech_card->get_added_children();
+        $view['title'] = 'Карта речевого развития';
+        $this->load->view('header', $view);
         $this->load->view('speech_card/index', $data);
+        $this->load->view('footer');
+
     }
 
     public function create()
@@ -25,7 +29,12 @@ class Speech_card extends CI_Controller
         if ($this->form_validation->run('speech_card') == FALSE)
         {
             $data['children'] = $this->speech_card->get_not_added_children();
+            $view['title'] = 'Создание - Карта речевого развития';
+
+            $this->load->view('header', $view);
             $this->load->view('speech_card/add', $data);
+            $this->load->view('footer');
+
         }
         else
         {
@@ -43,7 +52,12 @@ class Speech_card extends CI_Controller
         if ($this->form_validation->run('speech_card') == FALSE)
         {
             $data['card'] = $this->speech_card->get_one($id);
+            $view['title'] = 'Редактирование - Карта речевого развития';
+
+            $this->load->view('header', $view);
             $this->load->view('speech_card/edit', $data);
+            $this->load->view('footer');
+
         }
         else
         {

@@ -17,12 +17,28 @@ class Speech_screen extends CI_Controller
         $this->load->model('sounds_model', 'sounds');
     }
 
+    public function search()
+    {
+        $tmp = $this->screen->search($this->input->get('q'));
+        $data['screens'] = $this->screen->convert_data($tmp);
+        $data['sounds'] = $this->sounds->get_screen_sounds();
+        $view['title'] = 'Результаты поиска - Речевой экран';
+        $this->load->view('header', $view);
+        $this->load->view('speech_screen/index', $data);
+        $this->load->view('footer');
+    }
+
+
     public function index()
     {
         $tmp = $this->screen->get_all();
         $data['screens'] = $this->screen->convert_data($tmp);
         $data['sounds'] = $this->sounds->get_screen_sounds();
+
+        $view['title'] = 'Речевой экран';
+        $this->load->view('header', $view);
         $this->load->view('speech_screen/index', $data);
+        $this->load->view('footer');
     }
 
     public function create()
@@ -32,7 +48,11 @@ class Speech_screen extends CI_Controller
             $data['children'] = $this->screen->get_not_added_children();
             $data['sounds'] = $this->sounds->get_screen_sounds();
             $data['progress'] = $this->progress->get_all();
+            $view['title'] = 'Создание - Речевой экран';
+            $this->load->view('header', $view);
             $this->load->view('speech_screen/add', $data);
+            $this->load->view('footer');
+
         }
         else
         {
@@ -57,10 +77,13 @@ class Speech_screen extends CI_Controller
         {
             $tmp = $this->screen->get_one($id);
             $data['screen'] = $this->screen->convert_data_row($tmp);
-            var_dump($data['screen']);
             $data['sounds'] = $this->sounds->get_screen_sounds();
             $data['progress'] = $this->progress->get_all();
+            $view['title'] = 'Редактирование - Речевой экран';
+            $this->load->view('header', $view);
             $this->load->view('speech_screen/edit', $data);
+            $this->load->view('footer');
+
         }
         else
         {

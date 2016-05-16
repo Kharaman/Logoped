@@ -16,7 +16,21 @@ class Children extends CI_Controller
     public function index()
     {
         $data['children'] = $this->children->get_all();
+        $view['title'] = 'Список детей';
+        $this->load->view('header', $view);
         $this->load->view('children/index', $data);
+        $this->load->view('footer');
+
+    }
+
+    public function search()
+    {
+        $data['children'] = $this->children->search($this->input->get('q'));
+        $view['title'] = 'Результат поиска - Список детей';
+        $this->load->view('header', $view);
+        $this->load->view('children/index', $data);
+        $this->load->view('footer');
+
     }
 
     public function edit($id)
@@ -24,7 +38,11 @@ class Children extends CI_Controller
         if ($this->form_validation->run('children') == FALSE)
         {
             $data['child'] = $this->children->get_one($id);
+            $view['title'] = 'Редактирование - Список детей';
+            $this->load->view('header', $view);
             $this->load->view('children/edit', $data);
+            $this->load->view('footer');
+
         }
         else
         {
@@ -53,7 +71,10 @@ class Children extends CI_Controller
     {
         if ($this->form_validation->run('children') == FALSE)
         {
+            $view['title'] = 'Создание - Список детей';
+            $this->load->view('header', $view);
             $this->load->view('children/add');
+            $this->load->view('footer');
         }
         else
         {

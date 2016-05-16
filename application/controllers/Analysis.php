@@ -16,14 +16,21 @@ class Analysis extends CI_Controller
     public function index()
     {
         $data['children'] = $this->analysis->get_added_children();
+        $view['title'] = 'Анализ результативности';
+        $this->load->view('header', $view);
         $this->load->view('analysis/index', $data);
+        $this->load->view('footer');
+
     }
 
     public function view($children_id)
     {
         $data['analysis'] = $this->analysis->get_children_analysis($children_id);
         $data['child'] = $this->children->get_child_full_name($children_id);
+        $view['title'] = 'Анализ результативности';
+        $this->load->view('header', $view);
         $this->load->view('analysis/view', $data);
+        $this->load->view('footer');
     }
 
     public function create()
@@ -31,7 +38,10 @@ class Analysis extends CI_Controller
         if ($this->form_validation->run('analysis') == FALSE)
         {
             $data['children'] = $this->children->get_children_full_names();
+            $view['title'] = 'Создание - Анализ результативности';
+            $this->load->view('header', $view);
             $this->load->view('analysis/add', $data);
+            $this->load->view('footer');
         }
         else
         {
@@ -51,15 +61,19 @@ class Analysis extends CI_Controller
         if ($this->form_validation->run('analysis') == FALSE)
         {
             $data['analysis'] = $this->analysis->get_one($id);
+            $view['title'] = 'Редактирование - Анализ результативности';
+            $this->load->view('header', $view);
             $this->load->view('analysis/edit', $data);
+            $this->load->view('footer');
+
         }
         else
         {
             $data = $this->generic->get_post('description');
-            $children_id = $this->generic->get_post('children_id');
+            $children_id = $this->input->post('children_id');
             if ($this->analysis->edit($id, $data))
             {
-                header('Location: /analysis/view/' . $children_id['children_id']);
+                header('Location: /analysis/view/' . $children_id);
                 exit;
             }
         }

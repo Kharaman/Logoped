@@ -85,8 +85,9 @@ class Auth extends CI_Controller {
 				'id'   => 'password',
 				'type' => 'password',
 			);
-
+			$view['title'] = 'Авторизация';
 			$this->_render_page('auth/login', $this->data);
+
 		}
 	}
 

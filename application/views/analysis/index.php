@@ -1,16 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Анализ резльтатаивности</title>
-</head>
-<body>
-<a href="/analysis/create/">Add</a><br>
-<?php foreach($children as $child): ?>
-    <a href="/analysis/view/<?= $child->id; ?>"><?= $child->full_name; ?></a> | <a href="/analysis/delete_all/<?= $child->id; ?>">X</a><br>
-<?php endforeach; ?>
-</body>
-</html>
+<a class="btn-add btn-floating waves-effect waves-light" href="/analysis/create/"><i class="material-icons">add</i></a>
+<div class="col s6">
+    <ul class="collection">
+    <?php foreach($children as $child): ?>
+    	<li class="collection-item">
+        <a href="/analysis/view/<?= $child->id; ?>"><?= $child->full_name; ?></a>
+        <a href="/analysis/delete_all/<?= $child->id; ?>" class="delete-link right"><i class="material-icons tools">close</i></a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>

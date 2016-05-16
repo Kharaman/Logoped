@@ -18,7 +18,11 @@ class Individual_plan extends CI_Controller
     public function index()
     {
         $data['plans'] = $this->plan->get_added_children();
+        $view['title'] = 'Индивидуальный план развития';
+        $this->load->view('header', $view);
         $this->load->view('individual_plan/index', $data);
+        $this->load->view('footer');
+
     }
 
     public function create()
@@ -27,7 +31,11 @@ class Individual_plan extends CI_Controller
         {
             $data['children'] = $this->plan->get_not_added_children();
             $data['sounds'] = $this->sounds->get_plan_sounds();
+            $view['title'] = 'Создание - Индивидуальный план работы';
+            $this->load->view('header', $view);
             $this->load->view('individual_plan/add', $data);
+            $this->load->view('footer');
+
         }
         else
         {
@@ -53,7 +61,11 @@ class Individual_plan extends CI_Controller
             $tmp = $this->plan->get_one($id);
             $data['plan'] = $this->plan->convert_data_row($tmp);
             $data['sounds'] = $this->sounds->get_plan_sounds();
+            $view['title'] = 'Редактирование - Индивидуальный план работы';
+            $this->load->view('header', $view);
             $this->load->view('individual_plan/edit', $data);
+            $this->load->view('footer');
+
         }
         else
         {
