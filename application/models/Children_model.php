@@ -7,6 +7,8 @@ class Children_model extends MY_model
 
     public function get_all()
     {
+        $this->db->select('children.*, children_groups.name AS group_name');
+        $this->db->join('children_groups', 'children_groups.id = children.group_number');
         $this->db->order_by('full_name');
         $query = $this->db->get(self::$table);
         return $query->result();
@@ -32,4 +34,13 @@ class Children_model extends MY_model
         $query = $this->db->get(self::$table);
         return $query->result();
     }
+
+   /* public function get_one($id)
+    {
+        $this->db->select('children.*, children_groups.name AS group_name');
+        $this->db->join('children_groups', 'children_groups.id = children.group_number');
+        $this->db->order_by('full_name');
+        $query = $this->db->get_where(self::$table, ['id' => $id]);
+        return $query->row();
+    }*/
 }

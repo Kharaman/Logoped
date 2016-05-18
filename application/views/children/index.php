@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?= $child->address; ?></td>
                 <td><?= $child->date_PMPC; ?></td>
                 <td><?= $child->protocol_number; ?></td>
-                <td><?= $child->group_number; ?></td>
+                <td><?= $child->group_number . ' ' . $child->group_name; ?></td>
                 <td><a href="/children/edit/<?= $child->id; ?>"><i class="material-icons tools">edit</i></a></td>
                 <td><a href="/children/delete/<?= $child->id; ?>"><i class="material-icons tools">clear</i></a></td>
             </tr>

@@ -11,6 +11,7 @@ class Children extends CI_Controller
             redirect('auth/login');
             exit;
         }
+        $this->load->model('children_groups_model', 'children_groups');
     }
 
     public function index()
@@ -37,6 +38,7 @@ class Children extends CI_Controller
     {
         if ($this->form_validation->run('children') == FALSE)
         {
+            $data['groups'] = $this->children_groups->get_all();
             $data['child'] = $this->children->get_one($id);
             $view['title'] = 'Редактирование - Список детей';
             $this->load->view('header', $view);
@@ -69,11 +71,13 @@ class Children extends CI_Controller
 
     public function create()
     {
+        //var_dump($_POST);die;
         if ($this->form_validation->run('children') == FALSE)
         {
+            $data['groups'] = $this->children_groups->get_all();
             $view['title'] = 'Создание - Список детей';
             $this->load->view('header', $view);
-            $this->load->view('children/add');
+            $this->load->view('children/add', $data);
             $this->load->view('footer');
         }
         else

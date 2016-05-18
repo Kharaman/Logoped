@@ -10,6 +10,7 @@
 <body>
 <nav class="top-bar">
   <ul class="right">
+      <li><a href="/children_groups"><i class="material-icons">access_time</i>Группы</a></li>
       <li><a href="/work_schedule"><i class="material-icons">access_time</i>График работы</a></li>
       <li><a href="/classes_schedule"><i class="material-icons">access_time</i>Расписание занятий</a></li>
   	<li><a href="/home"><i class="material-icons">home</i>Home</a></li>

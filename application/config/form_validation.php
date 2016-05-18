@@ -155,6 +155,14 @@ $config = [
             'label' => 'Время конца',
             'rules' => 'required'
         ],
+    ],
+
+    'children_groups' => [
+        [
+            'field' => 'name',
+            'label' => 'Имя группы',
+            'rules' => 'required'
+        ]
     ]
 
 

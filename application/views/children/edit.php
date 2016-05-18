@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="input-field">
             <i class="material-icons prefix">date_range</i>
-            <input type="text" name="date" value="<?= set_value('date', $child->date); ?>" id="date">
+            <input type="date" class="datepicker" name="date" value="<?= set_value('date', $child->date); ?>" id="date">
             <label for="date">Дата рождения</label>
         </div>
 
@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="input-field">
             <i class="material-icons prefix">developer_board</i>
-            <input type="text" name="date_PMPC" value="<?= set_value('date_PMPC', $child->date_PMPC); ?>" id="date_PMPC">
+            <input type="date" class="datepicker" name="date_PMPC" value="<?= set_value('date_PMPC', $child->date_PMPC); ?>" id="date_PMPC">
             <label for="date_PMPC">Дата обследования ПМПК</label>
         </div>
 
@@ -36,8 +36,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="input-field">
             <i class="material-icons prefix">subject</i>
-            <input type="text" name="group_number" value="<?= set_value('group_number', $child->group_number); ?>" id="group_number">
-            <label for="group_number">№ группы</label>
+            <select name="group_number" id="group_number">
+                <?php foreach ($groups as $group): ?>
+                    <option value="<?= $group->id; ?>" <?php if ($group->id == $child->group_number) echo set_select('group_number', $group->id, TRUE); else echo set_select('group_number', $group->id); ?>>
+                        <?= $group->id . ' ' . $group->name; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <label>№ группы</label>
         </div>
         <div class="center-align">
             <button type="submit" class="btn-custom btn waves-effect waves-light">Редактировать</button>

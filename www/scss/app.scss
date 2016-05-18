@@ -114,11 +114,14 @@ nav ul {
 	.card-content {
 		font-size: .9rem;
 		color: #dbdfef;
+		min-height: 76px;
+		@media(max-width: 1248px) {
+			min-height: 96px;
+		}
 	}
 	.card-action {
 		padding: 9px 18px;
 	}
-
 	.btn {
 		height: 34px;
 		line-height: 34px;
@@ -132,14 +135,22 @@ nav ul {
 	}
 }
 
-table {
+table:not(.picker__table) {
+	margin-top: 1rem;
 	tr {
 		background-color: $item-color;
+		&:not(.border-row) {
+		border-bottom: 2px solid $border-color;
+		}
 	}
 	td,
 	th {
 		border-radius: 0;
 	}
+}
+
+.wrapper {
+	margin-top: 1rem;
 }
 
 table.highlight > tbody > tr:hover {
@@ -150,10 +161,6 @@ table.highlight > tbody > tr:hover {
 	border-bottom: 2px solid color('pink', 'custom');
 	background-color: $item-light-color;
 
-}
-
-tr:not(.border-row) {
-	border-bottom: 2px solid $border-color;
 }
 
 

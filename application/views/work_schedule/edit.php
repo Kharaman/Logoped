@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </select>
                 <input type="hidden" name="day" value="<?= $schedule->day; ?>">
             </td>
-            <td><input type="text" name="start_time" value="<?= set_value('start_time', $schedule->start_time); ?>"></td>
+            <td><input type="text" class="timepicker" name="start_time" value="<?= set_value('start_time', $schedule->start_time); ?>"></td>
             <td><input type="text" name="end_time" value="<?= set_value('end_time', $schedule->end_time); ?>"></td>
         </tr>
     </table>
