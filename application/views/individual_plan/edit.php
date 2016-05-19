@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <i class="material-icons prefix">person</i>
     <select disabled>
         <option value="">
-            <?= $plan['full_name']; ?>
+
         </option>
     </select>
     <input type="hidden" name="children_id" value="<?= $plan['children_id']; ?>">

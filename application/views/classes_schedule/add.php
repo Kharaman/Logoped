@@ -18,17 +18,17 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <div class="input-field">
     <i class="material-icons prefix">person</i>
-    <input type="text" name="time" value="<?= set_value('time'); ?>" id="time">
+    <input type="text" class="timepicker" name="time" value="<?= set_value('time'); ?>" id="time">
     <label for="time">Время</label>
 </div>
     
     <p>
     <input type="radio" id="group2" name="type" value="1" checked> <?= set_radio('type', '1'); ?>
-        <label for="group1">Групповое</label>
+        <label for="group2">Групповое</label>
     </p>
     <p>
     <input type="radio" id="group1" name="type" value="1" <?= set_radio('type', '1'); ?>>
-    <label for="group2">Индивидуальное</label>
+    <label for="group1">Индивидуальное</label>
     </p>
 
     <div class="input-field">

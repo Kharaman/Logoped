@@ -30,12 +30,13 @@ CREATE TABLE IF NOT EXISTS `children` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.children: ~2 rows (приблизительно)
+DELETE FROM `children`;
 /*!40000 ALTER TABLE `children` DISABLE KEYS */;
 INSERT INTO `children` (`id`, `full_name`, `date`, `address`, `date_PMPC`, `protocol_number`, `group_number`) VALUES
 	(1, 'Хараман Владимир Сергеевич', '2010-01-01', '123', '1995-10-12', 0, 3),
 	(3, 'Даниленко Андрей ', '2010-01-01', 'олололо', '1995-10-12', 2, 3),
 	(4, 'Губенко Александр Батьковчи', '2016-05-06', 'лол', '2000-01-01', 23232, 4),
-	(5, 'Гавнюк Иван Иванович', '2010-02-02', '123в', '2000-01-01', 23, 3);
+	(5, 'Гавнюк Иван Иванович', '2010-02-02', '123в', '2000-01-01', 23, 4);
 /*!40000 ALTER TABLE `children` ENABLE KEYS */;
 
 
@@ -45,14 +46,16 @@ CREATE TABLE IF NOT EXISTS `children_groups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.children_groups: ~2 rows (приблизительно)
+DELETE FROM `children_groups`;
 /*!40000 ALTER TABLE `children_groups` DISABLE KEYS */;
 INSERT INTO `children_groups` (`id`, `name`) VALUES
-	(1, 'ZZS'),
+	(1, 'Четко!'),
 	(2, 'ZZX'),
-	(3, 'ASD');
+	(3, 'ASD'),
+	(4, 'Google');
 /*!40000 ALTER TABLE `children_groups` ENABLE KEYS */;
 
 
@@ -69,13 +72,15 @@ CREATE TABLE IF NOT EXISTS `classes_schedule` (
   KEY `FK_classes_schedule_groups` (`group_number`),
   CONSTRAINT `FK_classes_schedule_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_classes_schedule_groups` FOREIGN KEY (`group_number`) REFERENCES `children_groups` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.classes_schedule: ~2 rows (приблизительно)
+DELETE FROM `classes_schedule`;
 /*!40000 ALTER TABLE `classes_schedule` DISABLE KEYS */;
 INSERT INTO `classes_schedule` (`id`, `children_id`, `group_number`, `day`, `time`) VALUES
 	(6, 4, NULL, 1, '13:02:00'),
-	(7, NULL, 2, 2, '14:00:00');
+	(7, NULL, 2, 2, '14:00:00'),
+	(10, NULL, 1, 1, '12:00:00');
 /*!40000 ALTER TABLE `classes_schedule` ENABLE KEYS */;
 
 
@@ -89,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.groups: ~3 rows (приблизительно)
+DELETE FROM `groups`;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 	(1, 'admin', 'Administrator'),
@@ -115,13 +121,12 @@ CREATE TABLE IF NOT EXISTS `individual_card` (
   CONSTRAINT `FK_individual_card_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.individual_card: ~4 rows (приблизительно)
+-- Дамп данных таблицы logoped.individual_card: ~2 rows (приблизительно)
+DELETE FROM `individual_card`;
 /*!40000 ALTER TABLE `individual_card` DISABLE KEYS */;
 INSERT INTO `individual_card` (`id`, `children_id`, `motility`, `pronunciation`, `syllable_word_structure`, `color_perception`, `spatial_perception`, `eyes_count_operations`, `items_compare`, `is_beginning`) VALUES
 	(1, 5, NULL, 'fsdfsd', 'sdfsdf', NULL, NULL, 0, NULL, 1),
-	(2, 5, NULL, 'sdfsdf', NULL, NULL, NULL, 0, NULL, 0),
-	(3, 4, NULL, NULL, 'sdfsf', NULL, NULL, 0, NULL, 1),
-	(4, 4, 'sadasdasd', 'asdasda', 'asdasdasdasd', '', '', 0, '', 0);
+	(2, 5, NULL, 'sdfsdf', NULL, NULL, NULL, 0, NULL, 0);
 /*!40000 ALTER TABLE `individual_card` ENABLE KEYS */;
 
 
@@ -138,28 +143,14 @@ CREATE TABLE IF NOT EXISTS `individual_plan` (
   PRIMARY KEY (`id`),
   KEY `FK_individual_plan_children` (`children_id`),
   CONSTRAINT `FK_individual_plan_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.individual_plan: ~2 rows (приблизительно)
+DELETE FROM `individual_plan`;
 /*!40000 ALTER TABLE `individual_plan` DISABLE KEYS */;
 INSERT INTO `individual_plan` (`id`, `children_id`, `whistling`, `hissing`, `sonor`, `affricate`, `other_sounds`) VALUES
-	(1, 1, 'Х, П', 'х, ц, щ', 'а, п, в', 'ы, а, ы', 'в, д');
+	(3, 3, 'hkjhkj', 'k', 'jh', 'kjh', 'kj');
 /*!40000 ALTER TABLE `individual_plan` ENABLE KEYS */;
-
-
--- Дамп структуры для таблица logoped.login_attempts
-DROP TABLE IF EXISTS `login_attempts`;
-CREATE TABLE IF NOT EXISTS `login_attempts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `ip_address` varchar(15) NOT NULL,
-  `login` varchar(100) NOT NULL,
-  `time` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Дамп данных таблицы logoped.login_attempts: ~0 rows (приблизительно)
-/*!40000 ALTER TABLE `login_attempts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `login_attempts` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.plan_sounds_rel
@@ -175,11 +166,27 @@ CREATE TABLE IF NOT EXISTS `plan_sounds_rel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.plan_sounds_rel: ~3 rows (приблизительно)
+DELETE FROM `plan_sounds_rel`;
 /*!40000 ALTER TABLE `plan_sounds_rel` DISABLE KEYS */;
 INSERT INTO `plan_sounds_rel` (`individual_plan_id`, `sound_id`, `is_done`) VALUES
-	(1, 4, 0),
-	(1, 6, 1),
-	(1, 7, 0);
+	(3, 4, 0),
+	(3, 6, 0),
+	(3, 7, 0),
+	(3, 17, 0),
+	(3, 18, 0),
+	(3, 19, 0),
+	(3, 20, 0),
+	(3, 21, 0),
+	(3, 22, 0),
+	(3, 23, 0),
+	(3, 24, 0),
+	(3, 25, 0),
+	(3, 26, 0),
+	(3, 27, 0),
+	(3, 28, 0),
+	(3, 29, 0),
+	(3, 30, 0),
+	(3, 31, 0);
 /*!40000 ALTER TABLE `plan_sounds_rel` ENABLE KEYS */;
 
 
@@ -193,6 +200,7 @@ CREATE TABLE IF NOT EXISTS `progress_marks` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.progress_marks: ~2 rows (приблизительно)
+DELETE FROM `progress_marks`;
 /*!40000 ALTER TABLE `progress_marks` DISABLE KEYS */;
 INSERT INTO `progress_marks` (`id`, `description`, `symbol`) VALUES
 	(1, 'Это типа ну сойдет ладгн', '(_)'),
@@ -214,10 +222,11 @@ CREATE TABLE IF NOT EXISTS `result_analysis` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.result_analysis: ~2 rows (приблизительно)
+DELETE FROM `result_analysis`;
 /*!40000 ALTER TABLE `result_analysis` DISABLE KEYS */;
 INSERT INTO `result_analysis` (`id`, `children_id`, `date`, `description`) VALUES
 	(3, 1, '2016-05-02', 'ОПАНА ЕМА'),
-	(6, 1, '2016-05-04', 'asdasdas');
+	(6, 1, '2016-05-04', 'Проработан звук такой-то такой-то, тра-та-тра Проработан звук такой-то такой-то, тра-та-тра\r\nПроработан звук такой-то такой-то, тра-та-тра masdasd asd\r\nПроработан звук такой-то такой-то, тра-та-тра');
 /*!40000 ALTER TABLE `result_analysis` ENABLE KEYS */;
 
 
@@ -236,17 +245,33 @@ CREATE TABLE IF NOT EXISTS `screen_sounds_rel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.screen_sounds_rel: ~9 rows (приблизительно)
+DELETE FROM `screen_sounds_rel`;
 /*!40000 ALTER TABLE `screen_sounds_rel` DISABLE KEYS */;
 INSERT INTO `screen_sounds_rel` (`speech_screen_id`, `sound_id`, `progress_mark_id`) VALUES
-	(4, 1, 2),
-	(4, 2, 1),
-	(4, 3, 1),
-	(5, 1, 3),
-	(5, 2, 3),
-	(5, 3, 1),
-	(8, 1, 3),
-	(8, 2, 3),
-	(8, 3, 1);
+	(9, 1, 1),
+	(9, 2, 1),
+	(9, 3, 1),
+	(9, 5, 1),
+	(9, 8, 1),
+	(9, 9, 1),
+	(9, 10, 1),
+	(9, 11, 1),
+	(9, 12, 1),
+	(9, 14, 2),
+	(9, 15, 1),
+	(9, 16, 1),
+	(10, 1, 1),
+	(10, 2, 1),
+	(10, 3, 1),
+	(10, 5, 1),
+	(10, 8, 1),
+	(10, 9, 1),
+	(10, 10, 1),
+	(10, 11, 1),
+	(10, 12, 1),
+	(10, 14, 1),
+	(10, 15, 1),
+	(10, 16, 1);
 /*!40000 ALTER TABLE `screen_sounds_rel` ENABLE KEYS */;
 
 
@@ -258,9 +283,10 @@ CREATE TABLE IF NOT EXISTS `sounds` (
   `transcription` varchar(10) NOT NULL,
   `is_screen` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.sounds: ~7 rows (приблизительно)
+DELETE FROM `sounds`;
 /*!40000 ALTER TABLE `sounds` DISABLE KEYS */;
 INSERT INTO `sounds` (`id`, `name`, `transcription`, `is_screen`) VALUES
 	(1, 'С', 'S', 1),
@@ -269,7 +295,30 @@ INSERT INTO `sounds` (`id`, `name`, `transcription`, `is_screen`) VALUES
 	(4, 'С-Сь', 'S-S\'', 0),
 	(5, 'Ч', 'Ch', 1),
 	(6, 'Ч-Чь', 'Ch-Ch\'', 0),
-	(7, 'З-Зь', 'Z-Z\'', 0);
+	(7, 'З-Зь', 'Z-Z\'', 0),
+	(8, 'Ш', 'Sh', 1),
+	(9, 'Ж', 'Zh', 1),
+	(10, 'Щ', 'Sch', 1),
+	(11, 'Р', 'R', 1),
+	(12, 'Л', 'L', 1),
+	(14, 'К', 'K', 1),
+	(15, 'Г', 'G', 1),
+	(16, 'Х', 'H', 1),
+	(17, 'Сь', 'S\'', 0),
+	(18, 'Зь', 'Z\'', 0),
+	(19, 'Рь', 'R\'', 0),
+	(20, 'C-З', 'S-Z', 0),
+	(21, 'С-Ц', 'S-C', 0),
+	(22, 'С-Ш', 'S-Sh', 0),
+	(23, 'Ж-З', 'Zh-Z', 0),
+	(24, 'Ж-Ш', 'Zh-Sh', 0),
+	(25, 'Ч-Ть', 'Ch-T\'', 0),
+	(26, 'Ль-Л', 'L-L\'', 0),
+	(27, 'Ч-Щ', 'Ch-Sh\'', 0),
+	(28, 'Щ-Сь', 'Sh\'-S\'', 0),
+	(29, 'Щ-Ть', 'Sh\'-T\'', 0),
+	(30, 'Р-Л', 'R-L', 0),
+	(31, 'Рь-Й', 'R\'-Y', 0);
 /*!40000 ALTER TABLE `sounds` ENABLE KEYS */;
 
 
@@ -304,6 +353,7 @@ CREATE TABLE IF NOT EXISTS `speech_card` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.speech_card: ~2 rows (приблизительно)
+DELETE FROM `speech_card`;
 /*!40000 ALTER TABLE `speech_card` DISABLE KEYS */;
 INSERT INTO `speech_card` (`id`, `children_id`, `peu_number`, `enrollment_date`, `parent_complaints`, `native_language`, `motility_state`, `hearing`, `general_development`, `attention`, `efficiency`, `memory`, `voice`, `timbre`, `breath`, `diction`, `vocal_cords`, `teeth`, `lips`, `tongue`, `movement`, `bite`) VALUES
 	(2, 1, 3, '0000-00-00', 'нет', 'русскийё', 'отличный ', 'отчл', 'ываы', 'аыфва', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -322,14 +372,14 @@ CREATE TABLE IF NOT EXISTS `speech_screen` (
   PRIMARY KEY (`id`),
   KEY `FK_speech_screen_children` (`children_id`),
   CONSTRAINT `FK_speech_screen_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.speech_screen: ~4 rows (приблизительно)
+DELETE FROM `speech_screen`;
 /*!40000 ALTER TABLE `speech_screen` DISABLE KEYS */;
 INSERT INTO `speech_screen` (`id`, `children_id`, `ff_perception`, `study_year`, `diagnosis`) VALUES
-	(4, 1, 'Нормальное', 3, 'хер там'),
-	(5, 3, 'Сойдет', 3, 'Трындец'),
-	(8, 4, 'вы', 23, 'фывфыв');
+	(9, 1, 'Отличное', 2, 'ФФР'),
+	(10, 5, 'Отличное', 23, 'ФФР');
 /*!40000 ALTER TABLE `speech_screen` ENABLE KEYS */;
 
 
@@ -357,10 +407,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.users: ~2 rows (приблизительно)
+DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', NULL, NULL, NULL, NULL, 1268889823, 1463060563, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-	(2, '127.0.0.1', 'teacher123', '$2y$08$12r9ZW6EqgqIiP1L5m8VqegMw40YCKcfNkaHlGy3S0WMP2TOn8U.q', NULL, 'kharaman.v@gmail.com', NULL, NULL, NULL, 'vZO3lW0nHZlIh1/5rzjd5e', 1463059967, 1463124681, 1, 'Евгения', 'Васильевна', 'ЛП №166', '0');
+	(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', NULL, NULL, NULL, NULL, 1268889823, 1463612724, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+	(2, '127.0.0.1', 'teacher123', '$2y$08$12r9ZW6EqgqIiP1L5m8VqegMw40YCKcfNkaHlGy3S0WMP2TOn8U.q', NULL, 'kharaman.v@gmail.com', NULL, NULL, NULL, 'RMPgkH5UDDw4SQKVJEbQde', 1463059967, 1463612747, 1, 'Евгения', 'Васильевна', 'ЛП №166', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
@@ -379,6 +430,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.users_groups: ~2 rows (приблизительно)
+DELETE FROM `users_groups`;
 /*!40000 ALTER TABLE `users_groups` DISABLE KEYS */;
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 	(5, 1, 1),
@@ -394,10 +446,14 @@ CREATE TABLE IF NOT EXISTS `work_schedule` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.work_schedule: ~0 rows (приблизительно)
+DELETE FROM `work_schedule`;
 /*!40000 ALTER TABLE `work_schedule` DISABLE KEYS */;
+INSERT INTO `work_schedule` (`id`, `day`, `start_time`, `end_time`) VALUES
+	(1, '1', '08:00:00', '12:00:00'),
+	(8, '2', '08:00:00', '14:00:00');
 /*!40000 ALTER TABLE `work_schedule` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

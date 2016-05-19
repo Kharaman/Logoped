@@ -16,6 +16,9 @@ body {
 	width: 100%;
 	top: 0;
 	background-color: $item-color;
+	ul {
+		
+	}
 }
 
 .login-block {
@@ -140,7 +143,7 @@ table:not(.picker__table) {
 	tr {
 		background-color: $item-color;
 		&:not(.border-row) {
-		border-bottom: 2px solid $border-color;
+			border-bottom: 2px solid $border-color;
 		}
 	}
 	td,
@@ -157,12 +160,17 @@ table.highlight > tbody > tr:hover {
 	background-color: $item-light-color;
 }
 
-.border-row {
+table tr.border-row {
 	border-bottom: 2px solid color('pink', 'custom');
 	background-color: $item-light-color;
 
 }
 
+.profile-img {
+	display: inline-block;
+    vertical-align: middle;
+    margin-right: .65rem;
+}
 
 .input-field input[type=search] {
 	width: 300px;
@@ -184,7 +192,7 @@ table.highlight > tbody > tr:hover {
 }
 
 .tools {
-	color: color('pink', 'custom');
+	color: color('pink', 'custom') !important;
 }
 
 .btn-custom {

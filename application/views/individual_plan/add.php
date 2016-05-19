@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php foreach ($sounds as $sound): ?>
                 <p class="col s2">
                     <input type="hidden" name="sound_<?= $sound->id; ?>" value="0">
-                    <input type="checkbox" name="sound_<?= $sound->id; ?>" value="1" <?= set_checkbox('sound_' . $sound->id, '1'); ?>>
+                    <input type="checkbox" id="sound_<?= $sound->id; ?>" name="sound_<?= $sound->id; ?>" value="1" <?= set_checkbox('sound_' . $sound->id, '1'); ?>>
                     <label for="sound_<?= $sound->id; ?>"><?= $sound->name; ?></label>
                 </p>
             <?php endforeach; ?>

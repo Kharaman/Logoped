@@ -6335,9 +6335,14 @@ table:not(.picker__table) {
 table.highlight > tbody > tr:hover {
   background-color: #50597b; }
 
-.border-row {
+table tr.border-row {
   border-bottom: 2px solid #f33869;
   background-color: #50597b; }
+
+.profile-img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .65rem; }
 
 .input-field input[type=search] {
   width: 300px;
@@ -6355,7 +6360,7 @@ table.highlight > tbody > tr:hover {
   bottom: 18px; }
 
 .tools {
-  color: #f33869; }
+  color: #f33869 !important; }
 
 .btn-custom {
   margin-top: 2rem;
@@ -6533,7 +6538,7 @@ table.highlight > tbody > tr:hover {
   height: 168px;
   position: absolute; }
   .lolliclock-canvas line {
-    stroke: #b3e5fc;
+    stroke: #f48fb1;
     stroke-width: 1;
     stroke-linecap: round; }
 
@@ -6573,9 +6578,9 @@ table.highlight > tbody > tr:hover {
   position: absolute;
   cursor: pointer; }
   .lolliclock-tick.active {
-    background: #b3e5fc; }
+    background: #f48fb1; }
   .lolliclock-tick:hover {
-    background: #b3e5fc; }
+    background: #f48fb1; }
 
 .lolliclock-ampm-block {
   display: flex;

@@ -20,8 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <option value="5">Пятница</option>
                 </select>
             </td>
-            <td><input type="text" name="start_time" value="<?= set_value('start_time'); ?>"></td>
-            <td><input type="text" name="end_time" value="<?= set_value('end_time'); ?>"></td>
+            <td><input type="text" class="timepicker" name="start_time" value="<?= set_value('start_time'); ?>"></td>
+            <td><input type="text" class="timepicker" name="end_time" value="<?= set_value('end_time'); ?>"></td>
         </tr>
     </table>
 <div class="center-align">

@@ -10,7 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <?= $card->full_name; ?>
                         </option>
                 </select>
-    <label><?= $card->full_name; ?></label>
 </div>
 
 <div class="input-field">
@@ -21,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <div class="input-field">
     <i class="material-icons prefix">person</i>
-    <input type="text" name="enrollment_date" value="<?= set_value('enrollment_date', $card->enrollment_date); ?>" id="enrollment_date">
+    <input type="date" class="datepicker" name="enrollment_date" value="<?= set_value('enrollment_date', $card->enrollment_date); ?>" id="enrollment_date">
     <label for="enrollment_date">Дата зачисления в группу</label>
 </div>
 

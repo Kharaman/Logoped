@@ -3,8 +3,8 @@
 
 <div id="infoMessage"><?php echo $message;?></div>
 
-<table cellpadding=0 cellspacing=10>
-	<tr>
+<table>
+	<tr class="border-row">
 		<th><?php echo lang('index_fname_th');?></th>
 		<th><?php echo lang('index_lname_th');?></th>
 		<th><?php echo lang('index_email_th');?></th>
@@ -23,7 +23,7 @@
                 <?php endforeach?>
 			</td>
 			<td><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></td>
-			<td><?php echo anchor("auth/edit_user/".$user->id, 'Edit') ;?></td>
+			<td><a href="/auth/edit_user/<?= $user->id; ?>"><i class="material-icons tools">edit</i></a></td>
 		</tr>
 	<?php endforeach;?>
 </table>
