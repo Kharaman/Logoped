@@ -135,7 +135,7 @@ $config = [
         [
             'field' => 'eyes_count_operations',
             'label' => 'Счетные операции глазами',
-            'rules' => 'required|numeric'
+            'rules' => 'numeric'
         ],
     ],
 

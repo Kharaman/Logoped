@@ -48,7 +48,7 @@ class Individual_plan extends CI_Controller
 
             if ($this->plan->insert_sounds($sounds))
             {
-                header('Location: /');
+                header('Location: /individual_plan');
                 exit;
             }
         }
@@ -74,7 +74,7 @@ class Individual_plan extends CI_Controller
 
             if ($this->plan->edit_sounds($this->plan->plan_id, $sounds))
             {
-                header('Location: /');
+                header('Location: /individual_plan/');
                 exit;
             }
         }

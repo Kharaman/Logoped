@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <a class="btn-add btn-floating waves-effect waves-light" href="/individual_plan/create/"><i class="material-icons">add</i></a>
-<div class="col s6">
+<div class="col s12">
     <ul class="collection">
     <?php foreach($plans as $plan): ?>
     	<li class="collection-item">

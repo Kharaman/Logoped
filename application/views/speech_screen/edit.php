@@ -17,19 +17,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 
 <div class="input-field">
-            <i class="material-icons prefix">persons</i>
+            <i class="material-icons prefix">record_voice_over</i>
             <input type="text" name="ff_perception" value="<?= set_value('ff_perception', $screen['ff_perception']); ?>" id="ff_perception">
             <label for="ff_perception">ФФ. восприятие</label>
     </div>
 
 <div class="input-field">
-            <i class="material-icons prefix">persons</i>
+            <i class="material-icons prefix">update</i>
             <input type="number" name="study_year" value="<?= set_value('study_year', $screen['study_year']); ?>" id="study_year">
             <label for="study_year">Год обучения</label>
     </div>
 
     <div class="input-field">
-            <i class="material-icons prefix">persons</i>
+            <i class="material-icons prefix">portrait</i>
             <input type="text" name="diagnosis" value="<?= set_value('diagnosis', $screen['diagnosis']); ?>" id="diagnosis">
             <label for="diagnosis">Диагноз</label>
     </div>

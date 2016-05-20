@@ -64,7 +64,7 @@ class Speech_card extends CI_Controller
             $data = $this->generic->get_post('children_id, peu_number, enrollment_date, parent_complaints, native_language, motility_state, hearing, general_development, attention, efficiency, memory, voice, timbre, breath, diction, vocal_cords, teeth, lips, tongue, movement, bite');
             if ($this->speech_card->edit($id, $data))
             {
-                header('Location: /');
+                header('Location: /speech_card');
                 exit;
             }
         }

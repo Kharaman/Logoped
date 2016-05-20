@@ -18,19 +18,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div class="input-field">
-    <i class="material-icons prefix">person</i>
+    <i class="material-icons prefix">filter_list</i>
     <input type="text" name="whistling" value="<?= set_value('whistling', $plan['whistling']); ?>" id="whistling">
     <label for="whistling">Свистящие</label>
 </div>
 
 <div class="input-field">
-    <i class="material-icons prefix">person</i>
+    <i class="material-icons prefix">low_priority</i>
     <input type="text" name="hissing" value="<?= set_value('hissing', $plan['hissing']); ?>" id="hissing">
     <label for="hissing">Шипящие</label>
 </div>
 
 <div class="input-field">
-    <i class="material-icons prefix">person</i>
+    <i class="material-icons prefix">sort</i>
     <input type="text" name="sonor" value="<?= set_value('sonor', $plan['sonor']); ?>" id="sonor">
     <label for="sonor">Соноры</label>
 </div>

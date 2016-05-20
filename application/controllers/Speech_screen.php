@@ -65,7 +65,7 @@ class Speech_screen extends CI_Controller
 
             if ($this->screen->insert_sounds($sounds))
             {
-                header('Location: /');
+                header('Location: /speech_screen');
                 exit;
             }
         }
@@ -92,7 +92,7 @@ class Speech_screen extends CI_Controller
 
             if ($this->screen->edit_sounds($this->screen->screen_id, $sounds))
             {
-                header('Location: /');
+                header('Location: /speech_screen');
                 exit;
             }
         }

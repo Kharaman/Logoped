@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <div class="input-field">
     <i class="material-icons prefix">person</i>
-    <input type="text" name="enrollment_date" value="<?= set_value('enrollment_date'); ?>" id="enrollment_date">
+    <input type="date" class="datepicker" name="enrollment_date" value="<?= set_value('enrollment_date'); ?>" id="enrollment_date">
     <label for="enrollment_date">Дата зачисления в группу</label>
 </div>
 

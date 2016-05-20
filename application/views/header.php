@@ -15,9 +15,9 @@ $account = $this->ion_auth->user()->row();
         <li><a href="/home"><i class="material-icons">home</i>Home</a></li>
     </ul>
   <ul class="right">
-      <li><a href="/children_groups"><i class="material-icons">access_time</i>Группы</a></li>
+      <li><a href="/children_groups"><i class="material-icons">people</i>Группы</a></li>
       <li><a href="/work_schedule"><i class="material-icons">access_time</i>График работы</a></li>
-      <li><a href="/classes_schedule"><i class="material-icons">access_time</i>Расписание занятий</a></li>
+      <li><a href="/classes_schedule"><i class="material-icons">event_note</i>Расписание занятий</a></li>
   	<li><i class="material-icons tools">account_circle</i><?= $account->username; ?></li>
     <li><a href="/auth/logout">Выйти</a></li>
   </ul>

@@ -30,6 +30,8 @@ class Children_model extends MY_model
 
     public function search($q, $field = 'full_name')
     {
+        $this->db->select('children.*, children_groups.name AS group_name');
+        $this->db->join('children_groups', 'children_groups.id = children.group_number');
         $this->db->like($field, $q);
         $query = $this->db->get(self::$table);
         return $query->result();
