@@ -91,7 +91,7 @@ var localhost = '192.168.1.56';
 gulp.task('browser-sync', function() {
 	browserSync.init({
         		
-			proxy: 'logoped'
+			proxy: 'http://logoped/'
 		
     });
 });

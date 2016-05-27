@@ -7,8 +7,15 @@ body {
 	&.body-auth {
 	    background: linear-gradient(161deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 8%, rgba(18,18,29,1) 25%, rgba(41,41,67,1) 50%, rgba(64,62,103,1) 75%, rgba(85,84,139,1) 100%);
 	}
+  color: #fff;
+  //background: url(http://img01.deviantart.net/6b41/i/2011/140/f/4/dark_blue_gradient_by_msketchley-d3gs0d8.jpg) no-repeat center center;
+//background-size: cover;
 	background-color: $body-color;
-	color: #fff;
+	//background: url(/img/bg2.jpg) repeat-x center center;
+  //background: linear-gradient(to bottom, #000000 , #53346D);  color: #fff;
+  //background: url(/img/bg3.jpg) no-repeat center center;
+  //background-size: 100% 100%;
+  //background-attachment: fixed;
 }
 
 .top-bar {

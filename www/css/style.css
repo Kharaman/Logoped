@@ -6220,8 +6220,8 @@ body {
   height: 100%; }
 
 body {
-  background-color: #1f253d;
-  color: #fff; }
+  color: #fff;
+  background-color: #1f253d; }
   body.body-auth {
     background: linear-gradient(161deg, black 0%, black 8%, #12121d 25%, #292943 50%, #403e67 75%, #55548b 100%); }
 
