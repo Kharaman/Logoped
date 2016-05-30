@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php foreach ($children as $child): ?>
             <tr>
                 <td class="photo-cell">
-                    <img src="<?php if ($child->photo) echo '/uploads/' . $child->photo; else echo '/img/profile.png'; ?>" alt="" class="circle">
+                    <img src="<?php if ($child->photo) echo '/uploads/40x40/' . $child->photo; else echo '/img/profile.png'; ?>" alt="" class="circle">
                 </td>
                 <td class="align-left"><?= $child->full_name; ?></td>
                 <td><?= $child->date; ?></td>
