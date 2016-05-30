@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <select name="children_id" id="fio">
     <option value="" disabled selected>Выберите ребенка</option>
         <?php foreach ($children as $child): ?>
-            <option value="<?= $child->id; ?>" <?= set_select('children_id', $child->id); ?>>
+            <option value="<?= $child->id; ?>" <?= set_select('children_id', $child->id);?> data-icon="<?php if ($child->photo) echo $child->photo; else echo '/img/profile.png' ?>" class="circle">
                 <?= $child->full_name; ?>
             </option>
         <?php endforeach; ?>

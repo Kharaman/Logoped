@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 <a class="btn-add btn-floating waves-effect waves-light" href="/speech_screen/create/"><i class="material-icons">add</i></a><table>
     <tr class="border-row">
+        <td></td>
         <td>Ф.И.О.</td>
         <td>ФФ. восприятие</td>
         <td>Год обучения</td>
@@ -22,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </tr>
     <?php foreach($screens as $screen): ?>
         <tr>
+            <td class="photo-cell"><img src="<?php if ($screen['children_photo']) echo $screen['children_photo']; else echo '/img/profile.png'; ?>" alt="" class="circle"></td>
             <td><?= $screen['full_name']; ?></td>
             <td><?= $screen['ff_perception']; ?></td>
             <td><?= $screen['study_year']; ?></td>

@@ -38,6 +38,7 @@ class Children extends CI_Controller
     {
         if ($this->form_validation->run('children') == FALSE)
         {
+            $data['error'] = '';
             $data['groups'] = $this->children_groups->get_all();
             $data['child'] = $this->children->get_one($id);
             $view['title'] = 'Редактирование - Список детей';
@@ -48,10 +49,63 @@ class Children extends CI_Controller
         }
         else
         {
-            $data = $this->generic->get_post('full_name, date, address, date_PMPC, protocol_number, group_number');
-            $this->children->edit($id, $data);
-            header('Location: /children/');
-            exit;
+            $config = [
+                'upload_path'   => './uploads/',
+                'allowed_types' => 'gif|jpg|png',
+                'max_size'      => 4000
+            ];
+            $this->load->library('upload', $config);
+            if ( ! $this->upload->do_upload('photo'))
+            {
+                if ( ! empty($_FILES['photo']['name']))
+                {
+                    $data['error'] = $this->upload->display_errors();
+                    $data['groups'] = $this->children_groups->get_all();
+                    $data['child'] = $this->children->get_one($id);
+                    $view['title'] = 'Редактирование - Список детей';
+                    $this->load->view('header', $view);
+                    $this->load->view('children/edit', $data);
+                    $this->load->view('footer');
+                }
+                else
+                {
+                    $data = $this->generic->get_post('full_name, date, address, date_PMPC, protocol_number, group_number');
+                    $this->children->edit($id, $data);
+                    header('Location: /children/');
+                    exit;
+                }
+            }
+            else {
+                $data = $this->generic->get_post('full_name, date, address, date_PMPC, protocol_number, group_number');
+                $data['photo'] = $this->upload->data('file_name');
+
+                copy('./uploads/' . $data['photo'], './uploads/40x40/' . $data['photo']);
+
+                $config = [
+                    'image_library'  => 'gd2',
+                    'source_image'   => './uploads/40x40/' . $data['photo'],
+                    'maintain_ratio' => FALSE,
+                    'width'          => 40,
+                    'height'         => 40,
+                ];
+                $this->load->library('image_lib', $config);
+                if ( ! $this->image_lib->resize())
+                {
+                    echo $this->image_lib->display_errors();
+                }
+                else
+                {
+                    $child_old = $this->children->get_photo($id);
+                    if ($child_old->photo)
+                    {
+                        unlink('./uploads/' . $child_old->photo);
+                        unlink('./uploads/40x40/' . $child_old->photo);
+                    }
+                    $this->children->edit($id, $data);
+                    header('Location: /children/');
+                    exit;
+                }
+            }
         }
     }
 
@@ -74,6 +128,7 @@ class Children extends CI_Controller
         //var_dump($_POST);die;
         if ($this->form_validation->run('children') == FALSE)
         {
+            $data['error'] = '';
             $data['groups'] = $this->children_groups->get_all();
             $view['title'] = 'Создание - Список детей';
             $this->load->view('header', $view);
@@ -82,11 +137,42 @@ class Children extends CI_Controller
         }
         else
         {
-            $data = $this->generic->get_post('full_name, date, address, date_PMPC, protocol_number, group_number');
-            if ($id = $this->children->create($data))
+            $config = [
+                'upload_path'   => './uploads/',
+                'allowed_types' => 'gif|jpg|png',
+                'max_size'      => 4000
+            ];
+            $this->load->library('upload', $config);
+            if ( ! $this->upload->do_upload('photo'))
             {
-                header('Location: /children/edit/' . $id);
-                exit;
+                if ( ! empty($_FILES['photo']['name']))
+                {
+                    $data['error'] = $this->upload->display_errors();
+                    $data['groups'] = $this->children_groups->get_all();
+                    $view['title'] = 'Создание - Список детей';
+                    $this->load->view('header', $view);
+                    $this->load->view('children/add', $data);
+                    $this->load->view('footer');
+                }
+                else
+                {
+                    $data = $this->generic->get_post('full_name, date, address, date_PMPC, protocol_number, group_number');
+                    if ($id = $this->children->create($data))
+                    {
+                        header('Location: /children/edit/' . $id);
+                        exit;
+                    }
+                }
+            }
+            else
+            {
+                $data = $this->generic->get_post('full_name, date, address, date_PMPC, protocol_number, group_number');
+                $data['photo'] = '/uploads/' . $this->upload->data('file_name');
+                if ($id = $this->children->create($data))
+                {
+                    header('Location: /children/edit/' . $id);
+                    exit;
+                }
             }
         }
     }

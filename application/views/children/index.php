@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <a class="btn-add btn-floating waves-effect waves-light" href="/children/create/"><i class="material-icons">add</i></a>
     <table class="highlight">
         <tr class="border-row">
+            <th></th>
             <th>Ф.И.О.</th>
             <th>Дата рождения</th>
             <th>Адресс</th>
@@ -22,6 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </tr>
         <?php foreach ($children as $child): ?>
             <tr>
+                <td class="photo-cell">
+                    <img src="<?php if ($child->photo) echo '/uploads/' . $child->photo; else echo '/img/profile.png'; ?>" alt="" class="circle">
+                </td>
                 <td class="align-left"><?= $child->full_name; ?></td>
                 <td><?= $child->date; ?></td>
                 <td><?= $child->address; ?></td>

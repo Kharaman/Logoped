@@ -37,7 +37,8 @@ abstract class MY_model extends CI_Model
     {
         $this->db->select('
             children.id AS id,
-            children.full_name AS full_name
+            children.full_name AS full_name,
+            children.photo AS photo
         ');
         $this->db->join(static::$table, static::$table . '.children_id = children.id', 'left');
         $this->db->where(static::$table . '.id IS NULL');

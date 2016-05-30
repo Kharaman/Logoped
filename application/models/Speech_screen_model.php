@@ -67,7 +67,8 @@ class Speech_screen_model extends MY_model
             speech_screen.study_year AS study_year,
             speech_screen.ff_perception AS ff_perception,
             speech_screen.diagnosis AS diagnosis,
-            children.full_name AS full_name
+            children.full_name AS full_name,
+            children.photo AS children_photo
         ');
         $this->db->join('sounds', 'sounds.id = screen_sounds_rel.sound_id', 'left');
         $this->db->join('progress_marks', 'progress_marks.id = screen_sounds_rel.progress_mark_id', 'left');
@@ -90,7 +91,8 @@ class Speech_screen_model extends MY_model
             speech_screen.study_year AS study_year,
             speech_screen.ff_perception AS ff_perception,
             speech_screen.diagnosis AS diagnosis,
-            children.full_name AS full_name
+            children.full_name AS full_name,
+            children.photo AS children_photo
         ');
         $this->db->join('sounds', 'sounds.id = screen_sounds_rel.sound_id', 'left');
         $this->db->join('progress_marks', 'progress_marks.id = screen_sounds_rel.progress_mark_id', 'left');

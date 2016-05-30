@@ -37,6 +37,13 @@ class Children_model extends MY_model
         return $query->result();
     }
 
+    public function get_photo($id)
+    {
+        $this->db->select('photo');
+        $query = $this->db->get_where(self::$table, ['id' => $id]);
+        return $query->row();
+    }
+
    /* public function get_one($id)
     {
         $this->db->select('children.*, children_groups.name AS group_name');
