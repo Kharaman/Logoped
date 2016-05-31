@@ -8,7 +8,7 @@ class Analysis_model extends MY_model
     public function get_added_children()
     {
         $query = $this->db->query('
-            SELECT children.id, children.full_name
+            SELECT children.id, children.full_name, children.photo AS children_photo
             FROM children
             WHERE children.id IN (
                 SELECT children_id

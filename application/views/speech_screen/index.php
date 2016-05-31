@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </tr>
     <?php foreach($screens as $screen): ?>
         <tr>
-            <td class="photo-cell"><img src="<?php if ($screen['children_photo']) echo $screen['children_photo']; else echo '/img/profile.png'; ?>" alt="" class="circle"></td>
+            <td class="photo-cell"><img src="<?php if ($screen['children_photo']) echo '/uploads/40x40/' . $screen['children_photo']; else echo '/img/profile.png'; ?>" alt="" class="circle"></td>
             <td><?= $screen['full_name']; ?></td>
             <td><?= $screen['ff_perception']; ?></td>
             <td><?= $screen['study_year']; ?></td>
@@ -36,3 +36,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </tr>
     <?php endforeach; ?>
 </table>
+<a href="/speech_screen/report" class="btn">Отчет</a>

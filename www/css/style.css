@@ -6429,6 +6429,23 @@ table tr.border-row {
   width: 40px;
   height: 40px; }
 
+.photo-thumb img,
+.photo-thumb span {
+  vertical-align: middle; }
+
+.photo-thumb img {
+  width: 40px;
+  height: 40px; }
+
+.photo-thumb span {
+  padding-left: 10px; }
+
+.image-preview {
+  margin-bottom: 1rem;
+  height: 200px;
+  background: url(/img/profile.png) no-repeat center center;
+  background-size: auto 100%; }
+
 .lolliclock-popover {
   position: absolute;
   top: 0;

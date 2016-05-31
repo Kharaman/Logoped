@@ -41,7 +41,8 @@ class Individual_plan_model extends MY_model
         $this->db->select('
             individual_plan.id AS id,
             individual_plan.children_id AS children_id,
-            children.full_name AS full_name
+            children.full_name AS full_name,
+            children.photo AS children_photo
         ');
         $this->db->join(self::$table, 'individual_plan.children_id = children.id');
         $query = $this->db->get('children');

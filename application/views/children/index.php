@@ -37,4 +37,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
         <?php endforeach; ?>
     </table>
+<a href="/children/report" class="btn">Отчет</a>
 

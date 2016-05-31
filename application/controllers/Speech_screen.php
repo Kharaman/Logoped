@@ -29,6 +29,74 @@ class Speech_screen extends CI_Controller
     }
 
 
+    public function report()
+    {
+        $tmp = $this->screen->get_all();
+        $screens = $this->screen->convert_data($tmp);
+        $sounds = $this->sounds->get_screen_sounds();
+
+
+        $cols = count($screens);
+        $range = $cols + 1;
+
+        $this->load->library('excel');
+        $this->excel->setActiveSheetIndex(0);
+        //name the worksheet
+        $this->excel->getActiveSheet()->setTitle('Речевой экран');
+        //set cell A1 content with some text
+        $this->excel->getActiveSheet()->setCellValue('A1', 'Ф.И.О. ребенка');
+        $this->excel->getActiveSheet()->setCellValue('B1', 'ФФ. восприятие');
+        $this->excel->getActiveSheet()->setCellValue('C1', 'Год обучения');
+        $this->excel->getActiveSheet()->setCellValue('D1', 'Диагноз');
+
+        $col_letter = 'E';
+        foreach ($sounds as $sound)
+        {
+            $this->excel->getActiveSheet()->setCellValue($col_letter . '1', $sound->name);
+            $col_letter++;
+        }
+        $col_letter = chr(ord($col_letter) - 1);
+
+        $this->excel->getActiveSheet()->getStyle('A1:' . $col_letter . '1')->getFont()->setBold(true);
+        $this->excel->getActiveSheet()->getStyle('A1:' . $col_letter . $range)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+        $this->excel->getActiveSheet()->getStyle('A1:' . $col_letter . '1')->applyFromArray(
+            [
+                'fill' => [
+                    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => ['rgb' => 'D1D1D1']
+                ]
+            ]
+        );
+
+        foreach (range(0, $cols) as $col) {
+            $this->excel->getActiveSheet()->getColumnDimensionByColumn($col)->setAutoSize(true);
+        }
+
+
+        for ($i = 0; $i < count($screens); $i++)
+        {
+            $cell = $i + 2;
+            $this->excel->getActiveSheet()->setCellValue('A' . $cell, $screens[$i]['full_name']);
+            $this->excel->getActiveSheet()->setCellValue('B' . $cell, $screens[$i]['ff_perception']);
+            $this->excel->getActiveSheet()->setCellValue('C' . $cell, $screens[$i]['study_year']);
+            $this->excel->getActiveSheet()->setCellValue('D' . $cell, $screens[$i]['diagnosis']);
+            $col_letter = 'E';
+            foreach ($screens[$i]['sounds'] as $sound)
+            {
+                $this->excel->getActiveSheet()->setCellValue($col_letter++ . $cell, $sound['progress_symbol']);
+            }
+        }
+
+        $filename='speech_screen_report.xls'; //save our workbook as this file name
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+        $objWriter->save('php://output');
+    }
+
     public function index()
     {
         $tmp = $this->screen->get_all();

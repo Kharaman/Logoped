@@ -50,9 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col s3">
             <div class="file-field input-field">
+                <div class="image-preview"></div>
                 <div class="btn waves-effect waves-light">
                     <span>Загрузить фото</span>
-                    <input type="file" name="photo">
+                    <input type="file" name="photo" id="upload-file">
                 </div>
                 <!--<div class="file-path-wrapper">
                     <input class="file-path validate" type="text">

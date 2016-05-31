@@ -10,7 +10,8 @@ class Speech_card_model extends MY_model
         $this->db->select('
             speech_card.id AS id,
             speech_card.children_id AS children_id,
-            children.full_name AS full_name
+            children.full_name AS full_name,
+            children.photo AS children_photo
         ');
         $this->db->join(self::$table, 'speech_card.children_id = children.id');
         $query = $this->db->get('children');
