@@ -40,7 +40,6 @@ class Classes_schedule extends CI_Controller
             $this->load->view('header', $view);
             $this->load->view('classes_schedule/add', $data);
             $this->load->view('footer');
-
         }
         else
         {

@@ -23,11 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </div>
     
     <p>
-    <input type="radio" id="group2" name="type" value="1" checked> <?= set_radio('type', '1'); ?>
+    <input type="radio" id="group2" name="type" value="1" checked> <?= set_radio('type'); ?>
         <label for="group2">Групповое</label>
     </p>
     <p>
-    <input type="radio" id="group1" name="type" value="1" <?= set_radio('type', '1'); ?>>
+    <input type="radio" id="group1" name="type" value="1" <?= set_radio('type'); ?>>
     <label for="group1">Индивидуальное</label>
     </p>
 

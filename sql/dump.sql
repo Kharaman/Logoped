@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Дамп структуры базы данных logoped
+DROP DATABASE IF EXISTS `logoped`;
 CREATE DATABASE IF NOT EXISTS `logoped` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `logoped`;
 
@@ -29,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `children` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.children: ~8 rows (приблизительно)
+-- Дамп данных таблицы logoped.children: ~7 rows (приблизительно)
 DELETE FROM `children`;
 /*!40000 ALTER TABLE `children` DISABLE KEYS */;
 INSERT INTO `children` (`id`, `full_name`, `date`, `address`, `date_PMPC`, `protocol_number`, `group_number`, `photo`) VALUES
@@ -536,7 +537,7 @@ DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
 	(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', NULL, NULL, NULL, NULL, 1268889823, 1463694915, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-	(2, '127.0.0.1', 'teacher123', '$2y$08$12r9ZW6EqgqIiP1L5m8VqegMw40YCKcfNkaHlGy3S0WMP2TOn8U.q', NULL, 'kharaman.v@gmail.com', NULL, NULL, NULL, 'RMPgkH5UDDw4SQKVJEbQde', 1463059967, 1464681391, 1, 'Евгения', 'Васильевна', 'ЛП №166', '0'),
+	(2, '127.0.0.1', 'teacher123', '$2y$08$12r9ZW6EqgqIiP1L5m8VqegMw40YCKcfNkaHlGy3S0WMP2TOn8U.q', NULL, 'kharaman.v@gmail.com', NULL, NULL, NULL, 'dmfnAcH8aK/EzEr4PDOnZu', 1463059967, 1464768440, 1, 'Евгения', 'Васильевна', 'ЛП №166', '0'),
 	(3, '127.0.0.1', 'pmpk', '$2y$08$SZHvfHFQNSctwFuEkeUcD.4pXZeJNu9vjxW878Srz8mZ4EZIJu.de', NULL, 'asd@ad.asd', NULL, NULL, NULL, NULL, 1463669489, NULL, 1, 'Заведующая', 'ПМПК', 'ЛП №166', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 

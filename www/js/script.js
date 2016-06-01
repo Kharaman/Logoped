@@ -802,11 +802,15 @@ $('#description').trigger('autoresize');
     $('#group1').click(function(){
         $('#first-select').show();
         $('#second-select').hide();
+        $('#second-select option').removeAttr('selected');
     });
 
     $('#group2').click(function(){
-        $('#first-select').hide();
+
         $('#second-select').show();
+        $('#first-select').hide();
+        $('#first-select option').removeAttr('selected');
+
     });
 
     $('.datepicker').pickadate({
