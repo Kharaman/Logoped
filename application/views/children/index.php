@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <label for="search">Search</label>
         <i class="material-icons right">close</i>
     </div>
+    <div id="search-result"></div>
 </form>
     <a class="btn-add btn-floating waves-effect waves-light" href="/children/create/"><i class="material-icons">add</i></a>
     <table class="highlight">

@@ -57,4 +57,12 @@ $('#description').trigger('autoresize');
             }
         }
     });
+
+    $('#search').searchbox({
+        url: '/children/search',
+        param: 'q',
+        dom_id: '.highlight',
+        delay: 250,
+        loading_css: '#spinner'
+    })
 });

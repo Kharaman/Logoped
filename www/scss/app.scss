@@ -9,7 +9,7 @@ body {
 	}
   color: #fff;
   //background: url(http://img01.deviantart.net/6b41/i/2011/140/f/4/dark_blue_gradient_by_msketchley-d3gs0d8.jpg) no-repeat center center;
-//background-size: cover;
+	//background-size: cover;
 	background-color: $body-color;
 	//background: url(/img/bg2.jpg) repeat-x center center;
   //background: linear-gradient(to bottom, #000000 , #53346D);  color: #fff;
@@ -24,7 +24,7 @@ body {
 	top: 0;
 	background-color: $item-color;
 	ul {
-		
+
 	}
 }
 
@@ -193,7 +193,7 @@ table tr.border-row {
 }
 
 .btn-add {
-	position: absolute;
+	position: fixed;
 	right: 18px;
 	bottom: 18px;
 }

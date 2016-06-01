@@ -6355,7 +6355,7 @@ table tr.border-row {
     background-color: transparent; }
 
 .btn-add {
-  position: absolute;
+  position: fixed;
   right: 18px;
   bottom: 18px; }
 
