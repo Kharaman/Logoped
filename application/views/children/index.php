@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3 class="center-align">Список детей</h3>
 <form class="right" action="/children/search">
     <div class="input-field">
-        <input type="search" name="q" id="search">
+        <input type="search" name="q" id="children-search" autocomplete="off">
         <label for="search">Search</label>
         <i class="material-icons right">close</i>
     </div>
     <div id="search-result"></div>
 </form>
-    <a class="btn-add btn-floating waves-effect waves-light" href="/children/create/"><i class="material-icons">add</i></a>
+<a class="btn-add btn-floating waves-effect waves-light" href="/children/create/"><i class="material-icons">add</i></a>
     <table class="highlight">
         <tr class="border-row">
             <th></th>

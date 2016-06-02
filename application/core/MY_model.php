@@ -45,4 +45,6 @@ abstract class MY_model extends CI_Model
         $query = $this->db->get('children');
         return $query->result();
     }
+
+
 }

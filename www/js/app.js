@@ -58,11 +58,19 @@ $('#description').trigger('autoresize');
         }
     });
 
-    $('#search').searchbox({
-        url: '/children/search',
+    $('#children-search').searchbox({
+        url: '/children/ajax_search',
         param: 'q',
-        dom_id: '.highlight',
+        dom_id: '#search-result',
+        delay: 250,
+        loading_css: '#spinner'
+    });
+    $('#screen-search').searchbox({
+        url: '/speech_screen/ajax_search',
+        param: 'q',
+        dom_id: '#search-result',
         delay: 250,
         loading_css: '#spinner'
     })
+
 });

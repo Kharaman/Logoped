@@ -4,10 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h3 class="center-align">Речевой экран</h3>
 <form class="right" action="/speech_screen/search">
     <div class="input-field">
-        <input type="search" name="q" id="search">
+        <input type="search" name="q" id="screen-search" autocomplete="off">
         <label for="search">Search</label>
         <i class="material-icons right">close</i>
     </div>
+    <div id="search-result"></div>
 </form>
 <a class="btn-add btn-floating waves-effect waves-light" href="/speech_screen/create/"><i class="material-icons">add</i></a><table>
     <tr class="border-row">

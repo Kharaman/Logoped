@@ -97,6 +97,13 @@ class Speech_screen extends CI_Controller
         $objWriter->save('php://output');
     }
 
+    public function ajax_search()
+    {
+        $data['children'] = $this->screen->ajax_search($this->input->get('q'));
+        $data['controller'] = 'speech_screen';
+        $this->load->view('ajax_search', $data);
+    }
+
     public function index()
     {
         $tmp = $this->screen->get_all();

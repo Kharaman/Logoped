@@ -6298,7 +6298,7 @@ table tr.border-row {
     background-color: transparent; }
 
 .btn-add {
-  position: absolute;
+  position: fixed;
   right: 18px;
   bottom: 18px; }
 
@@ -6384,6 +6384,9 @@ table tr.border-row {
   height: 200px;
   background: url(/img/profile.png) no-repeat center center;
   background-size: auto 100%; }
+
+#search-result {
+  position: absolute; }
 
 .lolliclock-popover {
   position: absolute;

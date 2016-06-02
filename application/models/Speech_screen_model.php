@@ -129,8 +129,6 @@ class Speech_screen_model extends MY_model
         return $query->result_array();
     }
 
-
-
     public function prepare_addition($post)
     {
         foreach ($post as $k => $v) {
@@ -168,6 +166,19 @@ class Speech_screen_model extends MY_model
     {
         $this->db->delete('screen_sounds_rel', ['speech_screen_id' => $id]);
         return $this->db->delete(self::$table, ['id' => $id]);
+    }
+
+    public function ajax_search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            speech_screen.id,
+            children.photo AS children_photo,
+            children.full_name
+        ');
+        $this->db->join('children', 'children.id = speech_screen.children_id');
+        $this->db->like($field, $q);
+        $query = $this->db->get(self::$table);
+        return $query->result();
     }
 
 
