@@ -6449,6 +6449,13 @@ table tr.border-row {
 #search-result {
   position: absolute; }
 
+.pagination {
+  text-align: center; }
+  .pagination li.active {
+    background-color: #f33869; }
+  .pagination li a {
+    color: #FFFFFF; }
+
 .lolliclock-popover {
   position: absolute;
   top: 0;

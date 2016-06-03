@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Children extends CI_Controller
 {
+    public $limit = 2;
+
     public function __construct()
     {
         parent::__construct();
@@ -70,10 +72,16 @@ class Children extends CI_Controller
 
     public function index()
     {
-        $this->load->library('pagination');
-        $config['base_url'] = '/test/page/';
 
-        $data['children'] = $this->children->get_all();
+        $config = [
+            'base_url'         => '/children/index/',
+            'total_rows'       => $this->children->count(),
+            'per_page'         => $this->limit,
+            'use_page_numbers' => TRUE
+        ];
+        $this->pagination->initialize($config);
+
+        $data['children'] = $this->children->get_all($this->limit);
         $data['pagination'] = $this->pagination->create_links();
         $view['title'] = 'Список детей';
         $this->load->view('header', $view);
@@ -85,6 +93,7 @@ class Children extends CI_Controller
     public function search()
     {
         $data['children'] = $this->children->search($this->input->get('q'));
+        $data['pagination'] = $this->pagination->create_links();
         $view['title'] = 'Результат поиска - Список детей';
         $this->load->view('header', $view);
         $this->load->view('children/index', $data);

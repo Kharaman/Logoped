@@ -5,12 +5,24 @@ class Children_model extends MY_model
 {
     protected static $table = 'children';
 
-    public function get_all($rows = '', $offset = '0')
+    public function get_all($limit = 10)
+    {
+        $page = $this->uri->segment(3, 0);
+        $offset = ($page == 0) ? 0 : ($limit * $page) - $limit;
+
+        $this->db->select('children.*, children_groups.name AS group_name');
+        $this->db->join('children_groups', 'children_groups.id = children.group_number');
+        $this->db->limit($limit, $offset);
+        $this->db->order_by('full_name');
+        $query = $this->db->get(self::$table);
+        return $query->result();
+    }
+
+    public function search($q, $field = 'full_name')
     {
         $this->db->select('children.*, children_groups.name AS group_name');
         $this->db->join('children_groups', 'children_groups.id = children.group_number');
-        $this->db->limit($rows, $offset);
-        $this->db->order_by('full_name');
+        $this->db->like($field, $q);
         $query = $this->db->get(self::$table);
         return $query->result();
     }
@@ -27,15 +39,6 @@ class Children_model extends MY_model
         $this->db->select('id, full_name');
         $query = $this->db->get_where(self::$table, ['id' => $id]);
         return $query->row();
-    }
-
-    public function search($q, $field = 'full_name')
-    {
-        $this->db->select('children.*, children_groups.name AS group_name');
-        $this->db->join('children_groups', 'children_groups.id = children.group_number');
-        $this->db->like($field, $q);
-        $query = $this->db->get(self::$table);
-        return $query->result();
     }
 
     public function get_photo($id)

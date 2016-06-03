@@ -46,5 +46,8 @@ abstract class MY_model extends CI_Model
         return $query->result();
     }
 
-
+    public function count()
+    {
+        return $this->db->count_all_results(static::$table);
+    }
 }

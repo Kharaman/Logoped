@@ -318,3 +318,15 @@ table tr.border-row {
 #search-result {
 	position: absolute;
 }
+
+.pagination {
+	text-align: center;
+	li {
+		&.active {
+			background-color: color('pink', 'custom');
+		}
+		a {
+			color: color('shades', 'white');
+		}
+	}
+}
