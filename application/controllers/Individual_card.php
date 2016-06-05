@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Individual_card extends CI_Controller
 {
+    public $limit = 2;
+
     public function __construct()
     {
         parent::__construct();
@@ -16,7 +18,17 @@ class Individual_card extends CI_Controller
 
     public function index()
     {
-        $data['children'] = $this->card->get_added_children();
+
+        $config = [
+            'base_url'         => '/individual_card/index/',
+            'total_rows'       => count($this->card->get_added_children('')),
+            'per_page'         => $this->limit,
+            'use_page_numbers' => TRUE
+        ];
+        $this->pagination->initialize($config);
+
+        $data['children'] = $this->card->get_added_children($this->limit);
+        $data['pagination'] = $this->pagination->create_links();
         $view['title'] = 'Индивидуальные карты развития';
         $this->load->view('header', $view);
         $this->load->view('individual_card/index', $data);

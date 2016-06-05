@@ -36,8 +36,11 @@ class Individual_plan_model extends MY_model
         return $this->db->insert_batch('plan_sounds_rel', $data);
     }
 
-    public function get_added_children()
+    public function get_added_children($limit = 10)
     {
+        $page = $this->uri->segment(3, 0);
+        $offset = ($page == 0) ? 0 : ($limit * $page) - $limit;
+
         $this->db->select('
             individual_plan.id AS id,
             individual_plan.children_id AS children_id,
@@ -45,6 +48,7 @@ class Individual_plan_model extends MY_model
             children.photo AS children_photo
         ');
         $this->db->join(self::$table, 'individual_plan.children_id = children.id');
+        $this->db->limit($limit, $offset);
         $query = $this->db->get('children');
         return $query->result();
     }

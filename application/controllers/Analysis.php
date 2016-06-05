@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Analysis extends CI_Controller
 {
+    public $limit = 2;
+
     public function __construct()
     {
         parent::__construct();
@@ -15,7 +17,17 @@ class Analysis extends CI_Controller
 
     public function index()
     {
-        $data['children'] = $this->analysis->get_added_children();
+        $config = [
+            'base_url'         => '/analysis/index/',
+            'total_rows'       => $this->analysis->count(),
+            'per_page'         => $this->limit,
+            'use_page_numbers' => TRUE
+        ];
+        $this->pagination->initialize($config);
+
+        $data['children'] = $this->analysis->get_added_children($this->limit);
+        $data['pagination'] = $this->pagination->create_links();
+
         $view['title'] = 'Анализ результативности';
         $this->load->view('header', $view);
         $this->load->view('analysis/index', $data);

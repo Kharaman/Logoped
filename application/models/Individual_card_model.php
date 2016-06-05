@@ -26,8 +26,11 @@ class Individual_card_model extends MY_model
         return $query->row();
     }
 
-    public function get_added_children()
+    public function get_added_children($limit = 10)
     {
+        $page = $this->uri->segment(3, 0);
+        $offset = ($page == 0) ? 0 : ($limit * $page) - $limit;
+
         $this->db->select('
             individual_card.id AS id,
             individual_card.children_id AS children_id,
@@ -35,6 +38,7 @@ class Individual_card_model extends MY_model
             children.photo AS children_photo
         ');
         $this->db->join(self::$table, 'individual_card.children_id = children.id');
+        $this->db->limit($limit, $offset);
         $this->db->group_by('children.full_name');
         $query = $this->db->get('children');
         return $query->result();

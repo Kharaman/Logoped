@@ -5,8 +5,11 @@ class Analysis_model extends MY_model
 {
     protected static $table = 'result_analysis';
 
-    public function get_added_children()
+    public function get_added_children($limit = 10)
     {
+        $page = $this->uri->segment(3, 0);
+        $offset = ($page == 0) ? 0 : ($limit * $page) - $limit;
+
         $query = $this->db->query('
             SELECT children.id, children.full_name, children.photo AS children_photo
             FROM children
@@ -14,7 +17,8 @@ class Analysis_model extends MY_model
                 SELECT children_id
                 FROM result_analysis
             )
-        ');
+            LIMIT ' . $offset . ', ' . $limit
+        );
 
         return $query->result();
     }

@@ -6226,9 +6226,6 @@ body {
     background: linear-gradient(161deg, black 0%, black 8%, #12121d 25%, #292943 50%, #403e67 75%, #55548b 100%); }
 
 .top-bar {
-  position: absolute;
-  width: 100%;
-  top: 0;
   background-color: #394264; }
 
 .login-block {
@@ -6455,6 +6452,148 @@ table tr.border-row {
     background-color: #f33869; }
   .pagination li a {
     color: #FFFFFF; }
+
+#wrapper {
+  min-height: 100%; }
+
+.animating, .animating #side-wrapper {
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  transition: all .25s ease; }
+
+#wrapper .top-bar {
+  padding-left: 54px; }
+
+#side-wrapper, #wrapper.minimized.animating #side-wrapper {
+  padding-left: 0;
+  left: 0; }
+
+#wrapper.minimized #side-wrapper, #wrapper.animating #side-wrapper {
+  padding-left: 140px;
+  left: -140px; }
+
+#side-wrapper {
+  position: absolute;
+  width: 194px;
+  height: 100%;
+  color: #a7b1c2;
+  white-space: nowrap;
+  overflow-x: hidden;
+  background: #394264;
+  z-index: 3;
+  box-shadow: 1px 0px 5px 1px rgba(0, 0, 0, 0.25); }
+
+/* Sidebar Toggle style */
+.navbar-brand[data-toggle="sidebar"] {
+  color: #00B9AC; }
+
+.navbar-brand[data-toggle="sidebar"]:focus, .navbar-brand[data-toggle="sidebar"]:hover {
+  color: #00A095; }
+
+/* Sidebar Header style */
+#side-wrapper > .media {
+  padding: 25px 15px;
+  background: url("../img/header-profile.png") no-repeat;
+  border-bottom: 1px solid #243442; }
+
+#side-wrapper > .media .media-object {
+  max-height: 42px; }
+
+.minimized #side-wrapper > .media {
+  padding: 4px 6px; }
+
+.minimized #side-wrapper > .media .media-object {
+  border-radius: 50%; }
+
+/* Sidebar Nav style */
+#side-wrapper > .nav-stacked > li + li {
+  margin-top: 0;
+  margin-left: 0; }
+
+#side-wrapper > .nav.nav-pills > li > a {
+  color: #a7b1c2;
+  border-radius: 0; }
+
+#side-wrapper > .nav.nav-pills > li > a:focus, #side-wrapper > .nav.nav-pills > li > a:hover, #side-wrapper > .nav .open > a, #side-wrapper > .nav .open > a:focus, #side-wrapper > .nav .open > a:hover {
+  color: #00B9AC;
+  background-color: #293846; }
+
+#side-wrapper > .nav.nav-pills > li.dropdown > a > .caret {
+  position: absolute;
+  top: 18px;
+  right: 12px;
+  transform: rotate(90deg); }
+
+#side-wrapper > .nav.nav-pills > li.dropdown.open {
+  border-left: 3px solid #00B9AC; }
+
+#side-wrapper > .nav.nav-pills > li.dropdown.open > a > .caret {
+  transform: rotate(0); }
+
+#side-wrapper > .nav.nav-pills > li > .dropdown-menu {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  float: none;
+  background-color: #243442;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+#side-wrapper > .nav.nav-pills > li > .dropdown-menu > li:before {
+  content: " ";
+  margin-left: 20px;
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  vertical-align: middle;
+  background-color: #2F4050;
+  border-radius: 50%; }
+
+#side-wrapper > .nav.nav-pills > li > .dropdown-menu > li > a {
+  margin-left: -2px;
+  display: inline-block;
+  color: #a7b1c2;
+  border-left: 1px solid #2F4050; }
+
+#side-wrapper > .nav.nav-pills > li > .dropdown-menu > li > a:focus, #side-wrapper > .nav.nav-pills > li > .dropdown-menu > li > a:hover {
+  color: #fff;
+  background-color: transparent; }
+
+.btn-canvas {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  height: 52px; }
+  .btn-canvas:focus {
+    background-color: transparent; }
+
+#wrapper:not(.minimized) #side-wrapper .btn-canvas {
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+#wrapper.minimized #side-wrapper .btn-canvas {
+  display: none; }
+
+.sidebar-list {
+  margin: 0; }
+  .sidebar-list li {
+    height: 52px; }
+    .sidebar-list li a {
+      display: inline-block;
+      line-height: 51px;
+      height: 51px; }
+    .sidebar-list li span, .sidebar-list li i {
+      vertical-align: middle; }
+    .sidebar-list li i {
+      color: #9099b7;
+      width: 54px;
+      font-size: 2rem;
+      text-align: center; }
+    .sidebar-list li span {
+      font-size: .9rem; }
 
 .lolliclock-popover {
   position: absolute;

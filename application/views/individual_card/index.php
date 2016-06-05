@@ -15,4 +15,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </li>
     <?php endforeach; ?>
     </ul>
+    <?= $pagination; ?>
 </div>

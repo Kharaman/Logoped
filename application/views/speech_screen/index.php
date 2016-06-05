@@ -37,4 +37,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </tr>
     <?php endforeach; ?>
 </table>
+<?= $pagination; ?>
 <a href="/speech_screen/report" class="btn">Отчет</a>

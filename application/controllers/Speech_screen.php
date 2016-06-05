@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Speech_screen extends CI_Controller
 {
 
+    public $limit = 2;
+
     public function __construct()
     {
         parent::__construct();
@@ -23,6 +25,27 @@ class Speech_screen extends CI_Controller
         $data['screens'] = $this->screen->convert_data($tmp);
         $data['sounds'] = $this->sounds->get_screen_sounds();
         $view['title'] = 'Результаты поиска - Речевой экран';
+        $this->load->view('header', $view);
+        $this->load->view('speech_screen/index', $data);
+        $this->load->view('footer');
+    }
+
+    public function index()
+    {
+        $config = [
+            'base_url'         => '/speech_screen/index/',
+            'total_rows'       => $this->screen->count(),
+            'per_page'         => $this->limit,
+            'use_page_numbers' => TRUE
+        ];
+        $this->pagination->initialize($config);
+
+        $tmp = $this->screen->get_all($this->limit);
+        $data['screens'] = $this->screen->convert_data($tmp);
+        $data['sounds'] = $this->sounds->get_screen_sounds();
+        $data['pagination'] = $this->pagination->create_links();
+
+        $view['title'] = 'Речевой экран';
         $this->load->view('header', $view);
         $this->load->view('speech_screen/index', $data);
         $this->load->view('footer');
@@ -102,18 +125,6 @@ class Speech_screen extends CI_Controller
         $data['children'] = $this->screen->ajax_search($this->input->get('q'));
         $data['controller'] = 'speech_screen';
         $this->load->view('ajax_search', $data);
-    }
-
-    public function index()
-    {
-        $tmp = $this->screen->get_all();
-        $data['screens'] = $this->screen->convert_data($tmp);
-        $data['sounds'] = $this->sounds->get_screen_sounds();
-
-        $view['title'] = 'Речевой экран';
-        $this->load->view('header', $view);
-        $this->load->view('speech_screen/index', $data);
-        $this->load->view('footer');
     }
 
     public function create()

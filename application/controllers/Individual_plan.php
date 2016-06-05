@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Individual_plan extends CI_Controller
 {
+    public $limit = 2;
+
     public function __construct()
     {
         parent::__construct();
@@ -17,7 +19,16 @@ class Individual_plan extends CI_Controller
 
     public function index()
     {
-        $data['plans'] = $this->plan->get_added_children();
+        $config = [
+            'base_url'         => '/individual_plan/index/',
+            'total_rows'       => $this->plan->count(),
+            'per_page'         => $this->limit,
+            'use_page_numbers' => TRUE
+        ];
+        $this->pagination->initialize($config);
+
+        $data['plans'] = $this->plan->get_added_children($this->limit);
+        $data['pagination'] = $this->pagination->create_links();
         $view['title'] = 'Индивидуальный план развития';
         $this->load->view('header', $view);
         $this->load->view('individual_plan/index', $data);

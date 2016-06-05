@@ -21,6 +21,7 @@ class Children extends CI_Controller
         $data = $this->children->get_report_data();
         $cols = count($data);
         $range = $cols + 1;
+        
 
         $this->load->library('excel');
         $this->excel->setActiveSheetIndex(0);

@@ -24,7 +24,7 @@ var css_result_filename = 'style';
 /*
 * List of JS files which should be concatenated.
 */
-var js_concat_files = ['www/js/materialize.min.js', 'www/js/lolliclock.js', 'www/js/searchbox.js', 'www/js/app.js'];
+var js_concat_files = ['www/js/materialize.min.js', 'www/js/lolliclock.js', 'www/js/searchbox.js', 'www/js/sidebar.min.js', 'www/js/app.js'];
 
 /* 
 * Concatenated JS file.

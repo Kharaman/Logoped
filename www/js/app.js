@@ -73,4 +73,23 @@ $('#description').trigger('autoresize');
         loading_css: '#spinner'
     })
 
+    $('#wrapper').sidebar({
+
+          // sidebar toggle
+          toggler: '[data-toggle="sidebar"]',
+
+          // CSS class for Wrapper when Sidebar is Collapsed
+          minimized: 'minimized',
+
+          // CSS class for Wrapper Transition
+          animating: 'animating',
+
+          // transition speed
+          duration: 350,
+
+          // auto collapse sidebar on small screens
+          breakpoint: 2000
+  
+    });
+
 });

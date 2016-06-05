@@ -853,6 +853,12 @@ j+="translateY("+(F[0].clientHeight-item_width)/2+"px)"),i=n[f(p)],i.style[z]=j+
     })
   }
 })(jQuery);
+/* ========================================================================
+ * Sidebar.js v1.0.0
+ * A simple jQuery sidebar!
+ * https://github.com/Ult-UX/sidebar.js
+ * ======================================================================== */
+(function($){jQuery.fn.extend({sidebar:function(options){if(!isValid(options)){return this}var opts=$.extend({},defaults,options);return this.each(function(){var Wrapper=$(this);var windowWidth=$(window).width();if(windowWidth<opts.breakpoint&&!(Wrapper.hasClass(opts.minimized))){Wrapper.addClass(opts.minimized)}else{if(windowWidth>=opts.breakpoint&&Wrapper.hasClass(opts.minimized)){Wrapper.removeClass(opts.minimized)}}var Toggler=$(opts.toggler);Toggler.on("click",function(event){event.preventDefault();if(Wrapper.hasClass(opts.minimized)){Wrapper.addClass(opts.animating);setTimeout(function(){Wrapper.removeClass(opts.minimized+" "+opts.animating)},opts.duration)}else{Wrapper.addClass(opts.animating);setTimeout(function(){Wrapper.addClass(opts.minimized);Wrapper.removeClass(opts.animating)},opts.duration)}})})}});var defaults={toggler:'[data-toggle="sidebar"]',minimized:"minimized",animating:"animating",duration:250,breakpoint:768};function isValid(options){return !options||(options&&typeof options==="object")?true:false}})(jQuery);
 $(document).ready(function() {
     $('select').material_select();
     $(".tab_item").not(":first").hide();
@@ -927,5 +933,24 @@ $('#description').trigger('autoresize');
         delay: 250,
         loading_css: '#spinner'
     })
+
+    $('#wrapper').sidebar({
+
+          // sidebar toggle
+          toggler: '[data-toggle="sidebar"]',
+
+          // CSS class for Wrapper when Sidebar is Collapsed
+          minimized: 'minimized',
+
+          // CSS class for Wrapper Transition
+          animating: 'animating',
+
+          // transition speed
+          duration: 350,
+
+          // auto collapse sidebar on small screens
+          breakpoint: 2000
+  
+    });
 
 });

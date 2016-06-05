@@ -5,8 +5,11 @@ class Speech_card_model extends MY_model
 {
     protected static $table = 'speech_card';
 
-    public function get_added_children()
+    public function get_added_children($limit = 10)
     {
+        $page = $this->uri->segment(3, 0);
+        $offset = ($page == 0) ? 0 : ($limit * $page) - $limit;
+
         $this->db->select('
             speech_card.id AS id,
             speech_card.children_id AS children_id,
@@ -14,6 +17,7 @@ class Speech_card_model extends MY_model
             children.photo AS children_photo
         ');
         $this->db->join(self::$table, 'speech_card.children_id = children.id');
+        $this->db->limit($limit, $offset);
         $query = $this->db->get('children');
         return $query->result();
     }

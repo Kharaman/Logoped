@@ -80,8 +80,14 @@ class Speech_screen_model extends MY_model
         return $query->result_array();
     }
 
-    public function get_all()
+    public function get_all($limit = 10)
     {
+
+        $page = $this->uri->segment(3, 0);
+        $offset = ($page == 0) ? 0 : ($limit * $page) - $limit;
+        $limit = $limit * 12;
+        $offset = $offset * 12;
+
         $this->db->select('
             sounds.name AS sounds_name,
             sounds.transcription AS sounds_transcription,
@@ -98,7 +104,8 @@ class Speech_screen_model extends MY_model
         $this->db->join('progress_marks', 'progress_marks.id = screen_sounds_rel.progress_mark_id', 'left');
         $this->db->join('speech_screen', 'speech_screen.id = screen_sounds_rel.speech_screen_id', 'left');
         $this->db->join('children', 'children.id = speech_screen.children_id', 'left');
-        $this->db->order_by('sounds.id, children.full_name');
+        $this->db->limit($limit, $offset);
+        $this->db->order_by('children.full_name, sounds.id');
         $query = $this->db->get('screen_sounds_rel');
         return $query->result_array();
     }
