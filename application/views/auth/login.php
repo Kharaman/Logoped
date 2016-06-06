@@ -20,7 +20,7 @@
 
   <div class="input-field">
     <i class="material-icons prefix">persons</i>
-    <?php echo form_input($identity);?>
+      <input type="text" name="identity" value="" id="identity" autocomplete="off"><!--    --><?php //echo form_input($identity);?>
     <label for="identity">Логин</label>
   </div>
 

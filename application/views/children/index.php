@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3 class="center-align">Список детей</h3>
 <form class="right" action="/children/search">
     <div class="input-field">
-        <input type="search" name="q" id="children-search" autocomplete="off">
+        <input type="search" name="q" id="children-search" autocomplete="off" autofocus>
         <label for="search">Search</label>
-        <i class="material-icons right">close</i>
+        <i class="material-icons right close-icon">close</i>
     </div>
     <div id="search-result"></div>
 </form>
@@ -39,5 +39,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php endforeach; ?>
     </table>
     <?= $pagination; ?>
-<a href="/children/report" class="btn">Отчет</a>
+<a href="/children/report" class="btn btn-report btn-floating"><i class="material-icons">assignment</i></a>
 
