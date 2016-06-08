@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <i class="material-icons prefix">person</i>
     <select name="children_id" id="">
                     <?php foreach($children as $child): ?>
-                        <option value="<?= $child->id; ?>">
+                        <option value="<?= $child->id; ?>" data-icon="<?php if ($child->photo) echo '/uploads/40x40/' . $child->photo; else echo '/img/profile.png'; ?>" class="circle">
                             <?= $child->full_name; ?>
                         </option>
                     <?php endforeach; ?>

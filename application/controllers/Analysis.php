@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Analysis extends CI_Controller
 {
-    public $limit = 2;
+    public $limit = 5;
 
     public function __construct()
     {
@@ -108,6 +108,5 @@ class Analysis extends CI_Controller
             exit;
         }
     }
-
 
 }

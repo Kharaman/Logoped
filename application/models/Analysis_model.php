@@ -35,6 +35,16 @@ class Analysis_model extends MY_model
         return $this->db->delete(self::$table, ['children_id' => $children_id]);
     }
 
+    public function count()
+    {
+        $query = $this->db->query('
+            SELECT *
+            FROM result_analysis
+            GROUP BY children_id
+        ');
+        return count($query->result());
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+    <h3 class="center-align">Индивидуальные планы</h3>
 
 <a class="btn-add btn-floating waves-effect waves-light" href="/individual_plan/create/"><i class="material-icons">add</i></a>
 <div class="col s12">

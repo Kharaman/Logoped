@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Individual_plan extends CI_Controller
 {
-    public $limit = 2;
+    public $limit = 5;
 
     public function __construct()
     {

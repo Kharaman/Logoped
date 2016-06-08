@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Children extends CI_Controller
 {
-    public $limit = 2;
+    public $limit = 5;
 
     public function __construct()
     {
@@ -224,7 +224,7 @@ class Children extends CI_Controller
         {
             $config = [
                 'upload_path'   => './uploads/',
-                'allowed_types' => 'gif|jpg|png',
+                'allowed_types' => 'gif|jpg|png|jpeg',
                 'max_size'      => 4000
             ];
             $this->load->library('upload', $config);

@@ -30,7 +30,7 @@ class Children_model extends MY_model
 
     public function get_children_full_names()
     {
-        $this->db->select('id, full_name');
+        $this->db->select('id, full_name, photo');
         $query = $this->db->get(self::$table);
         return $query->result();
     }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-
+    <h3 class="center-align">Карты речевого развития</h3>
 <a class="btn-add btn-floating waves-effect waves-light" href="/speech_card/create/"><i class="material-icons">add</i></a>
 <div class="col s8 offset-s2">
     <ul class="collection">

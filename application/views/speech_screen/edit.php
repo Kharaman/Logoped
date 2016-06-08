@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <i class="material-icons prefix">person</i>
     <select class="" id="fio" disabled>
                     <option value="">
-                        <?= $screen['full_name']; ?>
+                        
                     </option>
                 </select>
                 <input type="hidden" name="children_id" value="<?= $screen['children_id']; ?>">
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   
     <div class="center-align">
-            <button type="submit" class="btn-custom btn waves-effect waves-light">Добавить</button>
+            <button type="submit" class="btn-custom btn waves-effect waves-light">Редактировать</button>
         </div>
 
 

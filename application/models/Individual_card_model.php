@@ -9,7 +9,8 @@ class Individual_card_model extends MY_model
         $query = $this->db->query('
             SELECT
             children.id AS id,
-            children.full_name
+            children.full_name,
+            children.photo
             FROM children
             LEFT JOIN individual_card
             ON individual_card.children_id = children.id

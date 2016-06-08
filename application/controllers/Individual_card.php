@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Individual_card extends CI_Controller
 {
-    public $limit = 2;
+    public $limit = 5;
 
     public function __construct()
     {
@@ -83,16 +83,18 @@ class Individual_card extends CI_Controller
         {
             $data = $this->generic->get_post('children_id, is_beginning, pronunciation, syllable_word_structure, motility, color_perception, spatial_perception, eyes_count_operations, items_compare');
             $card = $this->card->check_period($data['children_id']);
-            if ($data['is_beginning'] === $card->is_beginning)
-            {
-                //exception
-                echo 'На этот период, для этого ребенка запись уже есть, пожалуйста, выберите на другой';
-                $data['children'] = $this->card->get_not_added_children();
-                $view['title'] = 'Создание - Индивидуальная карта развития';
-                $this->load->view('header', $view);
-                $this->load->view('individual_card/add', $data);
-                $this->load->view('footer');
-            }
+            if ($card) {
+                if ($data['is_beginning'] == $card->is_beginning)
+                {
+                    //exception
+                    echo 'На этот период, для этого ребенка запись уже есть, пожалуйста, выберите на другой';
+                    $data['children'] = $this->card->get_not_added_children();
+                    $view['title'] = 'Создание - Индивидуальная карта развития';
+                    $this->load->view('header', $view);
+                    $this->load->view('individual_card/add', $data);
+                    $this->load->view('footer');
+                }
+            }            
             else
             {
                 if ($this->card->create($data))

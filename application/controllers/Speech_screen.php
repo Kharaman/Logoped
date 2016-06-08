@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Speech_screen extends CI_Controller
 {
 
-    public $limit = 2;
+    public $limit = 5;
 
     public function __construct()
     {
@@ -169,7 +169,6 @@ class Speech_screen extends CI_Controller
             $this->load->view('header', $view);
             $this->load->view('speech_screen/edit', $data);
             $this->load->view('footer');
-
         }
         else
         {
