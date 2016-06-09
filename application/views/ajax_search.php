@@ -7,5 +7,5 @@
                 <span><?= $child->full_name; ?></span>
             </a>
         </li>
-    <?php endforeach; ?>
+    <?php endforeach;?>
 </ul>

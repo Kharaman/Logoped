@@ -99,7 +99,6 @@ class Children extends CI_Controller
         $this->load->view('header', $view);
         $this->load->view('children/index', $data);
         $this->load->view('footer');
-
     }
 
     public function ajax_search()

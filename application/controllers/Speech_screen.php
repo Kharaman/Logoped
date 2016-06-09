@@ -128,7 +128,8 @@ class Speech_screen extends CI_Controller
     }
 
     public function create()
-    {
+    {    
+        
         if ($this->form_validation->run('speech_screen') == FALSE)
         {
             $data['children'] = $this->screen->get_not_added_children();

@@ -58,20 +58,28 @@ $('#description').trigger('autoresize');
         }
     });
 
-    $('#children-search').searchbox({
-        url: '/children/ajax_search',
-        param: 'q',
-        dom_id: '#search-result',
-        delay: 250,
-        loading_css: '#spinner'
-    });
-    $('#screen-search').searchbox({
-        url: '/speech_screen/ajax_search',
-        param: 'q',
-        dom_id: '#search-result',
-        delay: 250,
-        loading_css: '#spinner'
-    });
+    if ($('input').is('#screen-search'))  {
+        $('#screen-search').searchbox({
+            url: '/speech_screen/ajax_search',
+            param: 'q',
+            dom_id: '#search-result',
+            delay: 250,
+            loading_css: '#spinner'
+        });
+    } else if ($('input').is('#children-search')) {
+        $('#children-search').searchbox({
+            url: '/children/ajax_search',
+            param: 'q',
+            dom_id: '#search-result',
+            delay: 250,
+            loading_css: '#spinner'
+        });
+        
+    }
+
+    
+
+  
 
     $('.close-icon').click(function(){
         $(this).parent().children('input').val('').blur();

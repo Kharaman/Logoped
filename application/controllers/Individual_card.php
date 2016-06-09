@@ -33,7 +33,6 @@ class Individual_card extends CI_Controller
         $this->load->view('header', $view);
         $this->load->view('individual_card/index', $data);
         $this->load->view('footer');
-
     }
 
     public function view($children_id)
@@ -77,7 +76,6 @@ class Individual_card extends CI_Controller
             $this->load->view('header', $view);
             $this->load->view('individual_card/add', $data);
             $this->load->view('footer');
-
         }
         else
         {

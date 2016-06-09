@@ -20,6 +20,7 @@ class Children_groups extends CI_Controller
 
     public function create()
     {
+        
         if ($this->form_validation->run('children_groups') == FALSE)
         {
             $view['title'] = 'Добавить группу';
