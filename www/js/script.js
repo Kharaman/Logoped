@@ -935,7 +935,7 @@ $('#description').trigger('autoresize');
             delay: 250,
             loading_css: '#spinner'
         });
-        if 
+        
     }
 
     
