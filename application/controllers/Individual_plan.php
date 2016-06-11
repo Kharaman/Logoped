@@ -17,6 +17,23 @@ class Individual_plan extends CI_Controller
         $this->load->model('sounds_model', 'sounds');
     }
 
+    public function search()
+    {
+        $data['plans'] = $this->plan->search($this->input->get('q'));
+        $data['pagination'] = '';
+        $view['title'] = 'Индивидуальный план развития';
+        $this->load->view('header', $view);
+        $this->load->view('individual_plan/index', $data);
+        $this->load->view('footer');
+    }
+
+    public function ajax_search()
+    {
+        $data['children'] = $this->plan->ajax_search($this->input->get('q'));
+        $data['controller'] = 'individual_plan';
+        $this->load->view('ajax_search', $data);
+    }
+
     public function index()
     {
         $config = [
@@ -98,6 +115,13 @@ class Individual_plan extends CI_Controller
             header('Location: /individual_plan/');
             exit;
         }
+    }
+
+    public function report()
+    {
+        $tmp = $this->plan->get_one($id);
+        $data['plan'] = $this->plan->convert_data_row($tmp);
+        $data['sounds'] = $this->sounds->get_plan_sounds();
     }
 
 }

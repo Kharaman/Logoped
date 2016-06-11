@@ -5,6 +5,21 @@ class Analysis_model extends MY_model
 {
     protected static $table = 'result_analysis';
 
+    public function search($q, $field = 'full_name')
+    {
+        $query = $this->db->query("
+            SELECT children.id, children.full_name, children.photo AS children_photo
+            FROM children
+            WHERE children.id IN (
+                SELECT children_id
+                FROM result_analysis
+            )
+            AND " . $field . " LIKE '%" . $q . "%'
+        ");
+
+        return $query->result();
+    }
+
     public function get_added_children($limit = 10)
     {
         $page = $this->uri->segment(3, 0);

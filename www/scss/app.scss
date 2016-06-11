@@ -319,6 +319,7 @@ table tr.border-row {
 	margin-top: -1rem;
 	max-height: 313px;
 	overflow: hidden;
+	z-index: 1;
 }
 
 .pagination {
@@ -517,4 +518,35 @@ nav ul a {
 	position: fixed;
 	right: 18px;
 	bottom: 73px;
+}
+
+.modal {
+	color: #343434;
+}
+
+.btn-help {
+	position: fixed;
+	right: 18px;
+	bottom: 128px;
+}
+
+.mark-desc {
+	border: 1px solid #343434;
+	font-weight: 700;
+	width: 30px;
+	text-align: center;
+	display: inline-block;
+}
+
+.main-report-link {
+	margin: 3px 0 0 0 !important;
+	
+	i {
+		font-size: 29px;
+		color: $icon-color;
+	}
+}
+
+.form-right {
+	padding-right: .75rem;
 }

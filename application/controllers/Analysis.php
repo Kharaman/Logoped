@@ -15,6 +15,24 @@ class Analysis extends CI_Controller
         $this->load->model('analysis_model', 'analysis');
     }
 
+    public function search()
+    {
+        $data['children'] = $this->analysis->search($this->input->get('q'));
+        $data['pagination'] = '';
+
+        $view['title'] = 'Анализ результативности';
+        $this->load->view('header', $view);
+        $this->load->view('analysis/index', $data);
+        $this->load->view('footer');
+    }
+
+    public function ajax_search()
+    {
+        $data['children'] = $this->analysis->search($this->input->get('q'));
+        $data['controller'] = 'analysis';
+        $this->load->view('ajax_search', $data);
+    }
+
     public function index()
     {
         $config = [

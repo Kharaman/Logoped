@@ -24,6 +24,7 @@ class Speech_screen extends CI_Controller
         $tmp = $this->screen->search($this->input->get('q'));
         $data['screens'] = $this->screen->convert_data($tmp);
         $data['sounds'] = $this->sounds->get_screen_sounds();
+        $data['pagination'] = '';
         $view['title'] = 'Результаты поиска - Речевой экран';
         $this->load->view('header', $view);
         $this->load->view('speech_screen/index', $data);

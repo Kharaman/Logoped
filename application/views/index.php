@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <p>Список детей зачисленных на логопедический пункт.</p>
             </div>
             <div class="card-action">
+              <a href="/children/report" class="right waves-effect main-report-link"><i class="material-icons">assignment</i></a>
               <a href="/children" class="btn waves-effect waves-light"><i class="material-icons right">group</i>Перейти</a>
             </div>
           </div>
@@ -31,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <p>Динамика коррекционной работы в речи ребенка.</p>
             </div>
             <div class="card-action">
+              <a href="/speech_screen/report" class="right waves-effect main-report-link"><i class="material-icons">assignment</i></a>
               <a href="/speech_screen" class="btn waves-effect waves-light"><i class="material-icons right">group</i>Перейти</a>
             </div>
           </div>

@@ -8,6 +8,35 @@ class Individual_plan_model extends MY_model
     public $plan_data = [];
     public $plan_id;
 
+    public function ajax_search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            individual_plan.id AS id,
+            children.full_name AS full_name,
+            children.photo AS children_photo
+        ');
+        $this->db->join(self::$table, 'individual_plan.children_id = children.id');
+        $this->db->order_by('children.full_name', 'asc');
+        $this->db->like($field, $q);
+        $query = $this->db->get('children');
+        return $query->result();
+    }
+
+    public function search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            individual_plan.id AS id,
+            individual_plan.children_id AS children_id,
+            children.full_name AS full_name,
+            children.photo AS children_photo
+        ');
+        $this->db->join(self::$table, 'individual_plan.children_id = children.id');
+        $this->db->order_by('children.full_name', 'asc');
+        $this->db->like($field, $q);
+        $query = $this->db->get('children');
+        return $query->result();
+    }
+
     public function prepare_addition($post)
     {
         foreach ($post as $k => $v) {

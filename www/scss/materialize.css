@@ -6522,6 +6522,9 @@ nav ul a {
   right: 18px;
   bottom: 73px; }
 
+.modal {
+  color: #000; }
+
 .lolliclock-popover {
   position: absolute;
   top: 0;

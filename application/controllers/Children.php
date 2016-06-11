@@ -94,7 +94,7 @@ class Children extends CI_Controller
     public function search()
     {
         $data['children'] = $this->children->search($this->input->get('q'));
-        $data['pagination'] = $this->pagination->create_links();
+        $data['pagination'] = '';
         $view['title'] = 'Результат поиска - Список детей';
         $this->load->view('header', $view);
         $this->load->view('children/index', $data);
@@ -106,7 +106,6 @@ class Children extends CI_Controller
         $data['children'] = $this->children->ajax_search($this->input->get('q'));
         $data['controller'] = 'children';
         $this->load->view('ajax_search', $data);
-
     }
 
     public function edit($id)

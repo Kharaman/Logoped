@@ -16,6 +16,23 @@ class Individual_card extends CI_Controller
         $this->load->model('individual_card_model', 'card');
     }
 
+    public function search()
+    {
+        $data['children'] = $this->card->search($this->input->get('q'));
+        $data['pagination'] = '';
+        $view['title'] = 'Индивидуальные карты развития';
+        $this->load->view('header', $view);
+        $this->load->view('individual_card/index', $data);
+        $this->load->view('footer');
+    }
+
+    public function ajax_search()
+    {
+        $data['children'] = $this->card->ajax_search($this->input->get('q'));
+        $data['controller'] = 'individual_card';
+        $this->load->view('ajax_search', $data);
+    }
+
     public function index()
     {
 

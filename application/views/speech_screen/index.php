@@ -39,3 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </table>
 <?= $pagination; ?>
 <a href="/speech_screen/report" class="btn btn-report btn-floating"><i class="material-icons">assignment</i></a>
+<a href="#modal-speech" class="btn btn-help btn-floating modal-trigger"><i class="material-icons">info_outline</i></a>
+
+<div id="modal-speech" class="modal">
+    <div class="modal-content">
+        <h4>Обозначение символов</h4>
+        <p><span class="mark-desc">(_)</span> - Звук выговаривается</p>
+        <p><span class="mark-desc">:_:</span> - Звук выговаривается не полностью</p>
+        <p><span class="mark-desc">_:_</span> - Звук не выговаривается</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn-flat">OK</a>
+    </div>
+</div>

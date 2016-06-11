@@ -4,6 +4,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Individual_card_model extends MY_model
 {
     protected static $table = 'individual_card';
+
+    public function search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            individual_card.id AS id,
+            individual_card.children_id AS children_id,
+            children.full_name AS full_name,
+            children.photo AS children_photo
+        ');
+        $this->db->join(self::$table, 'individual_card.children_id = children.id');
+        $this->db->like($field, $q);
+        $this->db->group_by('children.full_name');
+        $query = $this->db->get('children');
+        return $query->result();
+    }
+
+    public function ajax_search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            individual_card.children_id AS id,
+            children.full_name AS full_name,
+            children.photo AS children_photo
+        ');
+        $this->db->join(self::$table, 'individual_card.children_id = children.id');
+        $this->db->like($field, $q);
+        $this->db->group_by('children.full_name');
+        $query = $this->db->get('children');
+        return $query->result();
+    }
+
     public function get_not_added_children()
     {
         $query = $this->db->query('

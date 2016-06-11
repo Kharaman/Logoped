@@ -75,6 +75,38 @@ $('#description').trigger('autoresize');
             loading_css: '#spinner'
         });
         
+    } else if ($('input').is('#plan-search')) {
+        $('#plan-search').searchbox({
+            url: '/individual_plan/ajax_search',
+            param: 'q',
+            dom_id: '#search-result',
+            delay: 250,
+            loading_css: '#spinner'
+        });
+    } else if ($('input').is('#speech_card-search')) {
+        $('#speech_card-search').searchbox({
+            url: '/speech_card/ajax_search',
+            param: 'q',
+            dom_id: '#search-result',
+            delay: 250,
+            loading_css: '#spinner'
+        });
+    } else if ($('input').is('#analysis-search')) {
+        $('#analysis-search').searchbox({
+            url: '/analysis/ajax_search',
+            param: 'q',
+            dom_id: '#search-result',
+            delay: 250,
+            loading_css: '#spinner'
+        });
+    } else if ($('input').is('#card-search')) {
+        $('#card-search').searchbox({
+            url: '/individual_card/ajax_search',
+            param: 'q',
+            dom_id: '#search-result',
+            delay: 250,
+            loading_css: '#spinner'
+        });
     }
 
     
@@ -114,6 +146,10 @@ $('#description').trigger('autoresize');
 
     $('.mask').click(function(){
         $('#side-wrapper .btn-canvas').click();
+    });
+
+    $('.modal-trigger').leanModal({
+        opacity: .65,
     });
 
 

@@ -16,6 +16,24 @@ class Speech_card extends CI_Controller
         $this->load->model('speech_card_model', 'speech_card');
     }
 
+    public function search()
+    {
+        $data['cards'] = $this->speech_card->search($this->input->get('q'));
+        $data['pagination'] = '';
+
+        $view['title'] = 'Карта речевого развития';
+        $this->load->view('header', $view);
+        $this->load->view('speech_card/index', $data);
+        $this->load->view('footer');
+    }
+
+    public function ajax_search()
+    {
+        $data['children'] = $this->speech_card->search($this->input->get('q'));
+        $data['controller'] = 'speech_card';
+        $this->load->view('ajax_search', $data);
+    }
+
     public function index()
     {
 

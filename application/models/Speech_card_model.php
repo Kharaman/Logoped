@@ -33,4 +33,32 @@ class Speech_card_model extends MY_model
         $query = $this->db->get(self::$table);
         return $query->row();
     }
+
+    /*public function ajax_search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            speech_card.id AS id,
+            children.full_name AS full_name,
+            children.photo AS children_photo
+        ');
+        $this->db->join(self::$table, 'speech_card.children_id = children.id');
+        $this->db->order_by('children.full_name', 'asc');
+        $this->db->like($field, $q);
+        $query = $this->db->get('children');
+        return $query->result();
+    }*/
+
+    public function search($q, $field = 'full_name')
+    {
+        $this->db->select('
+            speech_card.id AS id,
+            children.full_name AS full_name,
+            children.photo AS children_photo
+        ');
+        $this->db->join(self::$table, 'speech_card.children_id = children.id');
+        $this->db->order_by('children.full_name', 'asc');
+        $this->db->like($field, $q);
+        $query = $this->db->get('children');
+        return $query->result();
+    }
 }

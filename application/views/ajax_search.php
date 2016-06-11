@@ -2,7 +2,7 @@
 <ul class="collection">
     <?php foreach($children as $child): ?>
         <li class="collection-item">
-            <a class="photo-thumb" href="/<?= $controller; ?>/edit/<?= $child->id; ?>">
+            <a class="photo-thumb" href="/<?= $controller; ?>/<?php if ( ($controller == 'individual_card') || ($controller == 'analysis') ) echo "view"; else echo 'edit'; ?>/<?= $child->id; ?>">
                 <img src="<?php if ($child->children_photo) echo '/uploads/40x40/' . $child->children_photo; else echo '/img/profile.png'; ?>" alt="" class="circle">
                 <span><?= $child->full_name; ?></span>
             </a>
