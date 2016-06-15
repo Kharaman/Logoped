@@ -1,20 +1,24 @@
-<h1><?php echo lang('create_group_heading');?></h1>
-<p><?php echo lang('create_group_subheading');?></p>
+<h3 class="center-align"><?php echo lang('create_group_heading');?></h3>
+<p class="center-align"><?php echo lang('create_group_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
 
 <?php echo form_open("auth/create_group");?>
 
-      <p>
-            <?php echo lang('create_group_name_label', 'group_name');?> <br />
-            <?php echo form_input($group_name);?>
-      </p>
+    <div class="input-field">
+        <i class="material-icons prefix">people</i>
+        <input type="text" name="group_name" value="<?= set_value('group_name'); ?>" id="group_name">
+        <label for="group_name" class="">Группа</label>
+    </div>
 
-      <p>
-            <?php echo lang('create_group_desc_label', 'description');?> <br />
-            <?php echo form_input($description);?>
-      </p>
+    <div class="input-field">
+        <i class="material-icons prefix">insert_comment</i>
+        <input type="text" name="description" value="<?= set_value('description'); ?>" id="description">
+        <label for="description" class="">Описание</label>
+    </div>
 
-      <p><?php echo form_submit('submit', lang('create_group_submit_btn'));?></p>
+      <p class="center-align">
+          <input class="btn" type="submit" name="submit" value="Создать группу">
+      </p>
 
 <?php echo form_close();?>

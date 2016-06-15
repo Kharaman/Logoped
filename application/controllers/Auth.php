@@ -514,8 +514,10 @@ class Auth extends CI_Controller {
                 'type'  => 'password',
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
-
+            $view['title'] = 'Создание пользователя';
+            $this->load->view('header', $view);
             $this->_render_page('auth/create_user', $this->data);
+            $this->load->view('footer');
         }
     }
 
@@ -666,8 +668,11 @@ class Auth extends CI_Controller {
 			'id'   => 'password_confirm',
 			'type' => 'password'
 		);
-		$view['title'] = 'Редактирование пользователя';
+		$view['title'] = 'Редактировать пользователя';
+		$this->load->view('header', $view);
 		$this->_render_page('auth/edit_user', $this->data);
+		$this->load->view('footer');
+
 	}
 
 	// create a new group
@@ -713,7 +718,10 @@ class Auth extends CI_Controller {
 				'value' => $this->form_validation->set_value('description'),
 			);
 
+			$view['title'] = 'Создать группу';
+			$this->load->view('header', $view);
 			$this->_render_page('auth/create_group', $this->data);
+			$this->load->view('footer');
 		}
 	}
 
@@ -778,7 +786,10 @@ class Auth extends CI_Controller {
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
 
+		$view['title'] = 'Редактировать группу';
+		$this->load->view('header', $view);
 		$this->_render_page('auth/edit_group', $this->data);
+		$this->load->view('footer');
 	}
 
 

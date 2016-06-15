@@ -33,7 +33,7 @@ $lang['login_submit_btn']      = 'Вход';
 $lang['login_forgot_password'] = 'Забыли свой пароль?';
 
 // Index
-$lang['index_heading']           = 'Пользователь';
+$lang['index_heading']           = 'Пользователи';
 $lang['index_subheading']        = 'Доступный список пользователей.';
 $lang['index_fname_th']          = 'Имя';
 $lang['index_lname_th']          = 'Фамилия';

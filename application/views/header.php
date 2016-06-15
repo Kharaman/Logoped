@@ -13,7 +13,7 @@ $account = $this->ion_auth->user()->row();
   <div id="wrapper" class="minimized">
     <aside id="side-wrapper">
       <ul class="sidebar-list">
-        <li></li>
+        <li><a><i class="material-icons tools">person</i><span>Logoped</span></a></li>
         <li><a class="waves-effect waves-light" href="/home"><i class="material-icons">home</i><span>Главная</span></a></li>
         <li><a class="waves-effect waves-light" href="/children"><i class="material-icons">account_box</i><span>Список детей</span></a></li>
         <li><a class="waves-effect waves-light" href="/speech_screen"><i class="material-icons">chat</i><span>Речевой экран</span></a></li>

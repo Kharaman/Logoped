@@ -1,5 +1,5 @@
-<h1><?php echo lang('edit_group_heading');?></h1>
-<p><?php echo lang('edit_group_subheading');?></p>
+<h3 class="center-align"><?php echo lang('edit_group_heading');?></h3>
+<p class="center-align"><?php echo lang('edit_group_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
 
@@ -15,6 +15,8 @@
             <?php echo form_input($group_description);?>
       </p>
 
-      <p><?php echo form_submit('submit', lang('edit_group_submit_btn'));?></p>
+      <p class="center-align">
+          <input class="btn" type="submit" name="submit" value="Сохранить группу">
+      </p>
 
 <?php echo form_close();?>

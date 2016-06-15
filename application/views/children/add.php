@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label>№ группы</label>
             </div>
         </div>
-        <div class="col s3">
+        <div class="col s3 center-align">
             <div class="file-field input-field">
                 <div class="image-preview"></div>
                 <div class="btn waves-effect waves-light">
