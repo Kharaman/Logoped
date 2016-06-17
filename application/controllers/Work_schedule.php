@@ -25,33 +25,54 @@ class Work_schedule extends CI_Controller
 
     public function edit($id)
     {
-        if ($this->form_validation->run('work_schedule') == FALSE)
+        if ($this->ion_auth->in_group('teacher'))
         {
-            $data['schedule'] = $this->work_schedule->get_one($id);
-            $view['title'] = 'Редактирование - График работы';
+            $view['title'] = 'У вас нет доступа';
             $this->load->view('header', $view);
-            $this->load->view('work_schedule/edit', $data);
+            $this->load->view('errors/forbid');
             $this->load->view('footer');
-
         }
-        else
+        else 
         {
-            $data = $this->generic->get_post('day, start_time, end_time');
-            if ($this->work_schedule->edit($id, $data))
+            if ($this->form_validation->run('work_schedule') == FALSE)
+            {
+                $data['schedule'] = $this->work_schedule->get_one($id);
+                $view['title'] = 'Редактирование - График работы';
+                $this->load->view('header', $view);
+                $this->load->view('work_schedule/edit', $data);
+                $this->load->view('footer');
+
+            }
+            else
+            {
+                $data = $this->generic->get_post('day, start_time, end_time');
+                if ($this->work_schedule->edit($id, $data))
+                {
+                    redirect('/work_schedule');
+                    exit;
+                }
+            }
+        }
+            
+    }
+
+    public function delete($id)
+    {
+        if ($this->ion_auth->in_group('teacher'))
+        {
+            $view['title'] = 'У вас нет доступа';
+            $this->load->view('header', $view);
+            $this->load->view('errors/forbid');
+            $this->load->view('footer');
+        }
+        else {
+            if ($this->work_schedule->delete($id))
             {
                 redirect('/work_schedule');
                 exit;
             }
         }
-    }
-
-    public function delete($id)
-    {
-        if ($this->work_schedule->delete($id))
-        {
-            redirect('/work_schedule');
-            exit;
-        }
+        
     }
 
     public function create()

@@ -11,13 +11,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Дамп структуры базы данных logoped
-DROP DATABASE IF EXISTS `logoped`;
 CREATE DATABASE IF NOT EXISTS `logoped` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `logoped`;
 
 
 -- Дамп структуры для таблица logoped.children
-DROP TABLE IF EXISTS `children`;
 CREATE TABLE IF NOT EXISTS `children` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `full_name` varchar(50) NOT NULL,
@@ -28,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `children` (
   `group_number` int(11) NOT NULL,
   `photo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.children: ~7 rows (приблизительно)
+-- Дамп данных таблицы logoped.children: ~11 rows (приблизительно)
 DELETE FROM `children`;
 /*!40000 ALTER TABLE `children` DISABLE KEYS */;
 INSERT INTO `children` (`id`, `full_name`, `date`, `address`, `date_PMPC`, `protocol_number`, `group_number`, `photo`) VALUES
@@ -40,12 +38,15 @@ INSERT INTO `children` (`id`, `full_name`, `date`, `address`, `date_PMPC`, `prot
 	(5, 'Иванов Иван Иванович', '2010-02-02', 'ул. Котова 32', '2000-01-01', 23, 4, NULL),
 	(6, 'Протасов Олег Олегович', '2016-05-13', 'ул. Орлова 32', '2016-05-11', 121, 1, 'zLt7r0wfR2o.jpg'),
 	(7, 'Прокопенко Иван Савельевич', '2016-05-11', 'ул. Генерала Куркчи', '2016-05-09', 568565, 3, 'AEOCNAOXkog.jpg'),
-	(12, 'ребенок уже с фото', '2016-05-30', 'фыв', '2016-05-30', 1231, 2, 'g3--scruDCk.jpg');
+	(12, 'ребенок уже с фото', '2016-05-30', 'фыв', '2016-05-30', 1231, 2, 'g3--scruDCk.jpg'),
+	(14, 'Гусева Екатерина Константиновна', '2016-06-15', 'ул. Петрозаводская', '2016-06-17', 322121, 2, '315424521.jpg'),
+	(15, 'Безруков Сергей Витальевич', '2016-06-01', 'ул. Ходченкова 12', '2016-06-06', 54, 2, '55deba7c0ab29_1392766028_sergey-bezrukov1.jpg'),
+	(16, 'Ургант Иван Андреевич', '2016-06-07', 'ул. Трубакова 8а', '2016-06-15', 11087, 2, 'ivan_urgant1.jpg'),
+	(17, 'Галустян Михаил Сергеевич', '2016-06-08', 'ул. Разбитых 23', '2016-06-07', 442, 1, 'foo.jpg');
 /*!40000 ALTER TABLE `children` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.children_groups
-DROP TABLE IF EXISTS `children_groups`;
 CREATE TABLE IF NOT EXISTS `children_groups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -64,7 +65,6 @@ INSERT INTO `children_groups` (`id`, `name`) VALUES
 
 
 -- Дамп структуры для таблица logoped.classes_schedule
-DROP TABLE IF EXISTS `classes_schedule`;
 CREATE TABLE IF NOT EXISTS `classes_schedule` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `children_id` int(10) unsigned DEFAULT NULL,
@@ -89,7 +89,6 @@ INSERT INTO `classes_schedule` (`id`, `children_id`, `group_number`, `day`, `tim
 
 
 -- Дамп структуры для таблица logoped.groups
-DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
@@ -108,7 +107,6 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 
 
 -- Дамп структуры для таблица logoped.individual_card
-DROP TABLE IF EXISTS `individual_card`;
 CREATE TABLE IF NOT EXISTS `individual_card` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `children_id` int(10) unsigned NOT NULL,
@@ -123,9 +121,9 @@ CREATE TABLE IF NOT EXISTS `individual_card` (
   PRIMARY KEY (`id`),
   KEY `FK_individual_card_children` (`children_id`),
   CONSTRAINT `FK_individual_card_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.individual_card: ~6 rows (приблизительно)
+-- Дамп данных таблицы logoped.individual_card: ~11 rows (приблизительно)
 DELETE FROM `individual_card`;
 /*!40000 ALTER TABLE `individual_card` DISABLE KEYS */;
 INSERT INTO `individual_card` (`id`, `children_id`, `motility`, `pronunciation`, `syllable_word_structure`, `color_perception`, `spatial_perception`, `eyes_count_operations`, `items_compare`, `is_beginning`) VALUES
@@ -134,12 +132,18 @@ INSERT INTO `individual_card` (`id`, `children_id`, `motility`, `pronunciation`,
 	(3, 1, '', 'asdasda', '', '', '', 0, '', 1),
 	(4, 7, 'fghfdgh', 'asdasda', 'ghfh', 'Нормальное восприятие', '', 0, '', 1),
 	(5, 1, '', 'sfsdfsd', 'sdfsdf', '', '', 0, '', 0),
-	(6, 7, '', 'sdsf', 'sdfsdf', '', '', 1, '', 0);
+	(6, 7, '', 'sdsf', 'sdfsdf', '', '', 1, '', 0),
+	(7, 15, '', '', '', '', '', 1, '', 0),
+	(8, 15, '', '', '', '', '', 1, '', 1),
+	(9, 17, '', 'asd', 'asd', '', '', 1, '', 1),
+	(10, 17, '', 'asd', 'asd', '', '', 1, '', 0),
+	(11, 14, '', '', '', '', '', 0, '', 0),
+	(12, 14, '', 'asda', 'asda', '', '', 0, '', 1),
+	(13, 3, '', '', '', '', '', 0, '', 1);
 /*!40000 ALTER TABLE `individual_card` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.individual_plan
-DROP TABLE IF EXISTS `individual_plan`;
 CREATE TABLE IF NOT EXISTS `individual_plan` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `children_id` int(10) unsigned NOT NULL,
@@ -151,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `individual_plan` (
   PRIMARY KEY (`id`),
   KEY `FK_individual_plan_children` (`children_id`),
   CONSTRAINT `FK_individual_plan_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы logoped.individual_plan: ~5 rows (приблизительно)
 DELETE FROM `individual_plan`;
@@ -161,12 +165,12 @@ INSERT INTO `individual_plan` (`id`, `children_id`, `whistling`, `hissing`, `son
 	(4, 5, 'с, з, ц', 'щ, ш', 'о, л', 'в, ы', 'ы, й'),
 	(5, 1, 'с, з, ц', 'щ, ш', 'о, л', 'в, ы', 'ы, й'),
 	(6, 4, 'с, з, ц', 'щ, ш', 'о, л', 'в, ы', 'ы, й'),
-	(7, 6, 'с, з, ц', 'щ, ш', 'о, л', 'в, ы', 'ы, й');
+	(7, 6, 'с, з, ц', 'щ, ш', 'о, л', 'в, ы', 'ы, й'),
+	(8, 7, 'с, з', 'ш, щ', 'а, з', 'ф, ч', 'ф');
 /*!40000 ALTER TABLE `individual_plan` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.plan_sounds_rel
-DROP TABLE IF EXISTS `plan_sounds_rel`;
 CREATE TABLE IF NOT EXISTS `plan_sounds_rel` (
   `individual_plan_id` int(10) unsigned DEFAULT NULL,
   `sound_id` int(10) unsigned DEFAULT NULL,
@@ -177,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `plan_sounds_rel` (
   CONSTRAINT `FK_plan_sounds_rel_sounds` FOREIGN KEY (`sound_id`) REFERENCES `sounds` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.plan_sounds_rel: ~90 rows (приблизительно)
+-- Дамп данных таблицы logoped.plan_sounds_rel: ~108 rows (приблизительно)
 DELETE FROM `plan_sounds_rel`;
 /*!40000 ALTER TABLE `plan_sounds_rel` DISABLE KEYS */;
 INSERT INTO `plan_sounds_rel` (`individual_plan_id`, `sound_id`, `is_done`) VALUES
@@ -270,12 +274,29 @@ INSERT INTO `plan_sounds_rel` (`individual_plan_id`, `sound_id`, `is_done`) VALU
 	(7, 28, 0),
 	(7, 29, 0),
 	(7, 30, 0),
-	(7, 31, 0);
+	(7, 31, 0),
+	(8, 4, 0),
+	(8, 6, 1),
+	(8, 7, 0),
+	(8, 17, 0),
+	(8, 18, 0),
+	(8, 19, 1),
+	(8, 20, 0),
+	(8, 21, 1),
+	(8, 22, 1),
+	(8, 23, 1),
+	(8, 24, 1),
+	(8, 25, 0),
+	(8, 26, 0),
+	(8, 27, 1),
+	(8, 28, 0),
+	(8, 29, 0),
+	(8, 30, 1),
+	(8, 31, 1);
 /*!40000 ALTER TABLE `plan_sounds_rel` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.progress_marks
-DROP TABLE IF EXISTS `progress_marks`;
 CREATE TABLE IF NOT EXISTS `progress_marks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(50) NOT NULL,
@@ -294,7 +315,6 @@ INSERT INTO `progress_marks` (`id`, `description`, `symbol`) VALUES
 
 
 -- Дамп структуры для таблица logoped.result_analysis
-DROP TABLE IF EXISTS `result_analysis`;
 CREATE TABLE IF NOT EXISTS `result_analysis` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `children_id` int(10) unsigned NOT NULL,
@@ -303,21 +323,24 @@ CREATE TABLE IF NOT EXISTS `result_analysis` (
   PRIMARY KEY (`id`),
   KEY `FK_result_analysis_children` (`children_id`),
   CONSTRAINT `FK_result_analysis_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.result_analysis: ~4 rows (приблизительно)
+-- Дамп данных таблицы logoped.result_analysis: ~8 rows (приблизительно)
 DELETE FROM `result_analysis`;
 /*!40000 ALTER TABLE `result_analysis` DISABLE KEYS */;
 INSERT INTO `result_analysis` (`id`, `children_id`, `date`, `description`) VALUES
 	(3, 1, '2016-05-02', 'Проработано все что только можно проработать. Инфа сотка'),
 	(6, 1, '2016-05-04', 'Проработан звук такой-то такой-то, тра-та-тра Проработан звук такой-то такой-то, тра-та-тра\r\nПроработан звук такой-то такой-то, тра-та-тра masdasd asd\r\nПроработан звук такой-то такой-то, тра-та-тра'),
 	(7, 6, '2016-05-12', 'Фывфывфыв'),
-	(8, 4, '2016-05-02', 'dsrsdrsdr');
+	(8, 4, '2016-05-02', 'dsrsdrsdr'),
+	(9, 6, '2016-06-06', 'Все пучком'),
+	(10, 14, '2016-06-06', 'Проработан звук И'),
+	(11, 12, '2016-06-06', 'asdkjaldjsad'),
+	(12, 16, '2016-06-06', 'asdasd');
 /*!40000 ALTER TABLE `result_analysis` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.screen_sounds_rel
-DROP TABLE IF EXISTS `screen_sounds_rel`;
 CREATE TABLE IF NOT EXISTS `screen_sounds_rel` (
   `speech_screen_id` int(10) unsigned DEFAULT NULL,
   `sound_id` int(10) unsigned DEFAULT NULL,
@@ -330,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `screen_sounds_rel` (
   CONSTRAINT `FK_screen_sounds_rel_speech_screen` FOREIGN KEY (`speech_screen_id`) REFERENCES `speech_screen` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.screen_sounds_rel: ~60 rows (приблизительно)
+-- Дамп данных таблицы logoped.screen_sounds_rel: ~84 rows (приблизительно)
 DELETE FROM `screen_sounds_rel`;
 /*!40000 ALTER TABLE `screen_sounds_rel` DISABLE KEYS */;
 INSERT INTO `screen_sounds_rel` (`speech_screen_id`, `sound_id`, `progress_mark_id`) VALUES
@@ -393,12 +416,35 @@ INSERT INTO `screen_sounds_rel` (`speech_screen_id`, `sound_id`, `progress_mark_
 	(13, 12, 2),
 	(13, 14, 1),
 	(13, 15, 1),
-	(13, 16, 2);
+	(13, 16, 2),
+	(14, 1, 3),
+	(14, 2, 1),
+	(14, 3, 2),
+	(14, 5, 1),
+	(14, 8, 2),
+	(14, 9, 3),
+	(14, 10, 1),
+	(14, 11, 1),
+	(14, 12, 2),
+	(14, 14, 1),
+	(14, 15, 1),
+	(14, 16, 1),
+	(15, 1, 2),
+	(15, 2, 2),
+	(15, 3, 1),
+	(15, 5, 1),
+	(15, 8, 1),
+	(15, 9, 1),
+	(15, 10, 1),
+	(15, 11, 1),
+	(15, 12, 1),
+	(15, 14, 1),
+	(15, 15, 1),
+	(15, 16, 1);
 /*!40000 ALTER TABLE `screen_sounds_rel` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.sounds
-DROP TABLE IF EXISTS `sounds`;
 CREATE TABLE IF NOT EXISTS `sounds` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(10) NOT NULL,
@@ -445,7 +491,6 @@ INSERT INTO `sounds` (`id`, `name`, `transcription`, `is_screen`) VALUES
 
 
 -- Дамп структуры для таблица logoped.speech_card
-DROP TABLE IF EXISTS `speech_card`;
 CREATE TABLE IF NOT EXISTS `speech_card` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `children_id` int(10) unsigned NOT NULL,
@@ -472,20 +517,22 @@ CREATE TABLE IF NOT EXISTS `speech_card` (
   PRIMARY KEY (`id`),
   KEY `FK_speech_card_children` (`children_id`),
   CONSTRAINT `FK_speech_card_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.speech_card: ~3 rows (приблизительно)
+-- Дамп данных таблицы logoped.speech_card: ~5 rows (приблизительно)
 DELETE FROM `speech_card`;
 /*!40000 ALTER TABLE `speech_card` DISABLE KEYS */;
 INSERT INTO `speech_card` (`id`, `children_id`, `peu_number`, `enrollment_date`, `parent_complaints`, `native_language`, `motility_state`, `hearing`, `general_development`, `attention`, `efficiency`, `memory`, `voice`, `timbre`, `breath`, `diction`, `vocal_cords`, `teeth`, `lips`, `tongue`, `movement`, `bite`) VALUES
 	(2, 1, 3, '0000-00-00', 'нет', 'русскийё', 'отличный ', 'отчл', 'ываы', 'аыфва', '', '', '', '', '', '', '', '', '', '', '', ''),
 	(3, 3, 2, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-	(4, 4, 21, '2016-05-12', 'нет', '', 'отличный ', 'отчл', 'ываы', '', '', '', '', '', '', '', '', '', '', 'zxc', '', '');
+	(4, 4, 21, '2016-05-12', 'нет', '', 'отличный ', 'отчл', 'ываы', '', '', '', '', '', '', '', '', '', '', 'zxc', '', ''),
+	(5, 7, 12, '2016-06-14', 'нет', 'русский', 'нормальное', 'отличный', 'хорошее', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+	(6, 15, 23, '2016-06-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+	(7, 14, 21, '2016-06-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 /*!40000 ALTER TABLE `speech_card` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.speech_screen
-DROP TABLE IF EXISTS `speech_screen`;
 CREATE TABLE IF NOT EXISTS `speech_screen` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `children_id` int(10) unsigned NOT NULL,
@@ -495,9 +542,9 @@ CREATE TABLE IF NOT EXISTS `speech_screen` (
   PRIMARY KEY (`id`),
   KEY `FK_speech_screen_children` (`children_id`),
   CONSTRAINT `FK_speech_screen_children` FOREIGN KEY (`children_id`) REFERENCES `children` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы logoped.speech_screen: ~5 rows (приблизительно)
+-- Дамп данных таблицы logoped.speech_screen: ~7 rows (приблизительно)
 DELETE FROM `speech_screen`;
 /*!40000 ALTER TABLE `speech_screen` DISABLE KEYS */;
 INSERT INTO `speech_screen` (`id`, `children_id`, `ff_perception`, `study_year`, `diagnosis`) VALUES
@@ -505,12 +552,13 @@ INSERT INTO `speech_screen` (`id`, `children_id`, `ff_perception`, `study_year`,
 	(10, 5, 'Отличное', 23, 'ФФР'),
 	(11, 6, 'Отличное', 2, 'ЛЛЫ'),
 	(12, 3, 'Отличное', 2, 'Example'),
-	(13, 4, 'Отличное', 2, 'Все хорошо');
+	(13, 4, 'Отличное', 2, 'Все хорошо'),
+	(14, 7, 'Хорошее', 2, 'ФНР'),
+	(15, 15, 'отличное', 1, 'ППР');
 /*!40000 ALTER TABLE `speech_screen` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(45) NOT NULL,
@@ -536,14 +584,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', NULL, NULL, NULL, NULL, 1268889823, 1463694915, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-	(2, '127.0.0.1', 'teacher123', '$2y$08$12r9ZW6EqgqIiP1L5m8VqegMw40YCKcfNkaHlGy3S0WMP2TOn8U.q', NULL, 'kharaman.v@gmail.com', NULL, NULL, NULL, 'ty322zbFiZO3wraGPhuf9e', 1463059967, 1464954609, 1, 'Евгения', 'Васильевна', 'ЛП №166', '0'),
+	(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', NULL, NULL, NULL, NULL, 1268889823, 1465940285, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+	(2, '127.0.0.1', 'teacher123', '$2y$08$12r9ZW6EqgqIiP1L5m8VqegMw40YCKcfNkaHlGy3S0WMP2TOn8U.q', NULL, 'kharaman.v@gmail.com', NULL, NULL, NULL, 'nU1GADZsKA5jwcP0W6UBd.', 1463059967, 1465993181, 1, 'Евгения', 'Васильевна', 'ЛП №166', '0'),
 	(3, '127.0.0.1', 'pmpk', '$2y$08$SZHvfHFQNSctwFuEkeUcD.4pXZeJNu9vjxW878Srz8mZ4EZIJu.de', NULL, 'asd@ad.asd', NULL, NULL, NULL, NULL, 1463669489, NULL, 1, 'Заведующая', 'ПМПК', 'ЛП №166', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
 -- Дамп структуры для таблица logoped.users_groups
-DROP TABLE IF EXISTS `users_groups`;
 CREATE TABLE IF NOT EXISTS `users_groups` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
@@ -567,7 +614,6 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 
 
 -- Дамп структуры для таблица logoped.work_schedule
-DROP TABLE IF EXISTS `work_schedule`;
 CREATE TABLE IF NOT EXISTS `work_schedule` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `day` varchar(50) NOT NULL,
