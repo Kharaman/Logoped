@@ -21,7 +21,8 @@
 					<?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8')) ;?><br />
                 <?php endforeach?>
 			</td>
-			<td><a href="/auth/edit_user/<?= $user->id; ?>"><i class="material-icons tools">edit</i></a></td>
+			<td><a href="/auth/edit_user/<?= $user->id; ?>"><i class="material-icons tools">edit</i></a>
+			<a href="/auth/delete_user/<?= $user->id; ?>"><i class="material-icons tools">close</i></a></td>
 		</tr>
 	<?php endforeach;?>
 </table>

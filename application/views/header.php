@@ -21,6 +21,7 @@ $account = $this->ion_auth->user()->row();
         <li><a class="waves-effect waves-light" href="/speech_card"><i class="material-icons">school</i><span>Речевое развитие</span></a></li>
         <li><a class="waves-effect waves-light" href="/analysis"><i class="material-icons">poll</i><span>Результативность</span></a></li>
         <li><a class="waves-effect waves-light" href="/individual_card"><i class="material-icons">content_paste</i><span>Карта развития</span></a></li>
+        <li><a class="waves-effect waves-light" href="/children_groups"><i class="material-icons">people</i><span>Группы</span></a></li>
       </ul>
       <button type="button" data-toggle="sidebar" class="btn-canvas"><i class="material-icons">close</i></button>
     </aside>
@@ -31,7 +32,7 @@ $account = $this->ion_auth->user()->row();
           <li><button type="button" data-toggle="sidebar" class="btn-canvas"><i class="material-icons">reorder</i></button></li>
         </ul>
         <ul class="right">
-          <li><a href="/children_groups"><i class="material-icons">people</i>Группы</a></li>
+          <li><a href="/games"><i class="material-icons">android</i>Игры</a></li>
           <li><a href="/work_schedule"><i class="material-icons">access_time</i>График работы</a></li>
           <li><a href="/classes_schedule"><i class="material-icons">event_note</i>Расписание занятий</a></li>
           <li><a href="#modal-exit" class="modal-trigger"><i class="material-icons tools">account_circle</i><?= $account->username; ?><i class="material-icons tiny">exit_to_app</i></a></li>

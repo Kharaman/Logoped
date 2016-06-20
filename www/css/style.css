@@ -6632,6 +6632,10 @@ nav ul a {
   left: 10px;
   top: 8px; }
 
+object {
+  height: 600px;
+  width: 100%; }
+
 .lolliclock-popover {
   position: absolute;
   top: 0;
