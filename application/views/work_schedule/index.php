@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! $this->ion_auth->in_group('teacher')):
 ?>
 <a class="btn-add btn-floating waves-effect waves-light" href="/work_schedule/create/"><i class="material-icons">add</i></a><table>
+<?php endif; ?>
 <table>
     <tr class="border-row">
         <td></td>

@@ -6636,6 +6636,10 @@ object {
   height: 600px;
   width: 100%; }
 
+.btn-upload {
+  left: 50%;
+  transform: translateX(-50%); }
+
 .lolliclock-popover {
   position: absolute;
   top: 0;

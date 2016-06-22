@@ -77,45 +77,53 @@ class Work_schedule extends CI_Controller
 
     public function create()
     {
-        if ($this->form_validation->run('work_schedule') == FALSE)
-        {
-            $view['title'] = 'Добавление - График работы';
-
-            $this->load->view('header', $view);
-            $this->load->view('work_schedule/add');
-            $this->load->view('footer');
-
-        }
-        else
-        {
-            $days = $this->work_schedule->get_days();
-            foreach ($days as $value)
+        if ( ! $this->ion_auth->in_group('teacher')) {
+            if ($this->form_validation->run('work_schedule') == FALSE)
             {
-                if ($value->day == $this->input->post('day'))
-                {
-                    $data['error'] = 'Такой день уже есть, пожалуйста отредактируйте или выберите другой день';
-                    $view['title'] = 'Добавление - График работы';
-                    $this->load->view('header', $view);
-                    $this->load->view('work_schedule/add', $data);
-                    $this->load->view('footer');
+                $view['title'] = 'Добавление - График работы';
 
-                    break;
-                }
-                else
+                $this->load->view('header', $view);
+                $this->load->view('work_schedule/add');
+                $this->load->view('footer');
+
+            }
+            else
+            {
+                $days = $this->work_schedule->get_days();
+                foreach ($days as $value)
                 {
-                    $data = $this->generic->get_post('day, start_time, end_time');
-                    if ($this->work_schedule->create($data))
+                    if ($value->day == $this->input->post('day'))
                     {
-                        redirect('/work_schedule');
-                        exit;
+                        $data['error'] = 'Такой день уже есть, пожалуйста отредактируйте или выберите другой день';
+                        $view['title'] = 'Добавление - График работы';
+                        $this->load->view('header', $view);
+                        $this->load->view('work_schedule/add', $data);
+                        $this->load->view('footer');
+
+                        break;
+                    }
+                    else
+                    {
+                        $data = $this->generic->get_post('day, start_time, end_time');
+                        if ($this->work_schedule->create($data))
+                        {
+                            redirect('/work_schedule');
+                            exit;
+                        }
                     }
                 }
+
             }
-
-        }
     }
+    else 
+    {
+        $view['title'] = 'У вас нет доступа';
+            $this->load->view('header', $view);
+            $this->load->view('errors/forbid');
+            $this->load->view('footer');
+    } 
 
 
 
-
+}
 }

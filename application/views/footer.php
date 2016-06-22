@@ -17,7 +17,6 @@
         <a href="/auth/logout" class="modal-action modal-close waves-effect btn-flat">OK</a>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script src="/js/script.min.js"></script>
 </body>
 </html>

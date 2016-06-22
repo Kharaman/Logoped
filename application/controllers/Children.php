@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Children extends CI_Controller
 {
-    public $limit = 5;
+    public $limit = 7;
 
     public function __construct()
     {

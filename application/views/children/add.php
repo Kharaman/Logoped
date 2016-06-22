@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col s3 center-align">
             <div class="file-field input-field">
                 <div class="image-preview"></div>
-                <div class="btn waves-effect waves-light">
+                <div class="btn waves-effect waves-light btn-upload">
                     <span>Загрузить фото</span>
                     <input type="file" name="photo" id="upload-file">
                 </div>

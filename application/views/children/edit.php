@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <img src="<?php if ($child->photo) echo '/uploads/' . $child->photo; else echo '/img/profile.png'; ?>" alt="">
                 </div>
                 <div class="file-field input-field">
-                    <div class="btn waves-effect waves-light">
+                    <div class="btn waves-effect waves-light btn-upload">
                         <span>Загрузить фото</span>
                         <input type="file" name="photo">
                     </div>
