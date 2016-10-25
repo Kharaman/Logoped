@@ -1,7 +1,7 @@
 {
   "name": "Logoped",
   "version": "1.0.0",
-  "description": "Create a powerful stream of customers from instagram",
+  "description": "Logoped",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",

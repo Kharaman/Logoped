@@ -19,7 +19,6 @@ var css_dest = 'www/css/';
 * Name of the main Less file inside Less source folder
 */
 var css_result_filename = 'style';
-// var css_result_filename = 'landing';
 
 /*
 * List of JS files which should be concatenated.
@@ -87,7 +86,6 @@ gulp.task('js-concat', function() {
 
 
 var localhost = '192.168.1.56';
-// var localhost  = '192.168.1.18';
 gulp.task('browser-sync', function() {
 	browserSync.init({
         		

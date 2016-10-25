@@ -7,22 +7,12 @@ body {
 	&.body-auth {
 	    background: linear-gradient(161deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 8%, rgba(18,18,29,1) 25%, rgba(41,41,67,1) 50%, rgba(64,62,103,1) 75%, rgba(85,84,139,1) 100%);
 	}
-  color: #fff;
-  //background: url(http://img01.deviantart.net/6b41/i/2011/140/f/4/dark_blue_gradient_by_msketchley-d3gs0d8.jpg) no-repeat center center;
-	//background-size: cover;
+  	color: #fff;
 	background-color: $body-color;
-	//background: url(/img/bg2.jpg) repeat-x center center;
-  //background: linear-gradient(to bottom, #000000 , #53346D);  color: #fff;
-  //background: url(/img/bg3.jpg) no-repeat center center;
-  //background-size: 100% 100%;
-  //background-attachment: fixed;
 }
 
 .top-bar {
 	background-color: $item-color;
-	//position: fixed;
-	//top: 0;
-	//width: 100%;
 	z-index: 4;
 }
 
@@ -110,16 +100,6 @@ nav ul {
 			text-shadow: 2px 2px 3px #000;
 		}
 	}
-	/* .card-title {
-		border-radius: 3px 3px 0 0;
-		height: $navbar-height - 5;
-		line-height: $navbar-height - 5;
-		text-align: center;
-		text-transform: uppercase;
-		font-size: 1.2rem;
-		font-weight: 400;
-		background-color: color('pink', 'custom');
-	} */
 	.card-content {
 		font-size: .9rem;
 		color: #dbdfef;
